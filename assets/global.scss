@@ -1,0 +1,50 @@
+$font-size-root: 20px;
+
+.small-input {
+
+
+    .v-input__control,
+    .v-text-field__slot,
+    .v-text-field__slot,
+    .v-input__slot {
+        min-height: 36px !important;
+        max-height: 36px !important;
+
+    }
+
+}
+
+
+
+.select-small-wrap {
+
+    .v-input__control,
+    .v-text-field__slot,
+    .v-text-field__slot,
+    .v-input__slot {
+        min-height: 36px !important;
+        max-height: 36px !important;
+
+    }
+
+    .v-input__append-inner {
+        margin-top: 5px !important;
+    }
+
+
+}
+
+
+//-----------commaon helper------------
+.has-helper {
+    position: relative;
+}
+
+.component-helper {
+    background-color: red;
+    position        : absolute;
+    top             : 0;
+    left            : 0;
+    z-index         : 111;
+
+}
