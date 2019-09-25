@@ -1,6 +1,6 @@
 const mock = {
   "counter": 0,
-  "apiKey": "8GUx3bDkoBQB1vdM",
+  "apiKey": "xxxxxxxxxxxx",
   "auth": {
     "currentUser": {
       "name": "",
