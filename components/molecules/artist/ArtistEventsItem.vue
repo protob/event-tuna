@@ -1,9 +1,124 @@
 <template>
-  <div></div>
+  <section class="has-helper artist-event-item">
+    <div class="component-helper">{{ $options.name }}</div>
+    <v-card class="item ma-1 py-2 px-4">
+      <div>
+        <div class="title">{{ item.displayName }}</div>
+        <div class="date">{{ item.start.date }}</div>
+      </div>
+      <div>
+        <div class="my-2">
+          <v-btn
+            disabled="disabled"
+            outlined="outlined"
+            depressed="depressed"
+            small="small"
+            color="primary"
+            >{{ item.type }}</v-btn
+          >
+        </div>
+      </div>
+      <v-container fluid="fluid" pt-0="pt-0" pb-0="pb-0">
+        <v-row :align="'start'" :justify="'start'">
+          <div class="mr-2 my-2">
+            <v-btn
+              depressed="depressed"
+              small="small"
+              color="primary"
+              @click="toggleDetails"
+              >details</v-btn
+            >
+          </div>
+          <a target="_blank" href="https://google.pl">
+            <div class="my-2">
+              <v-btn depressed="depressed" small="small" color="primary"
+                >Link</v-btn
+              >
+            </div>
+          </a>
+          <toolbar-event-single :country="country" />
+        </v-row>
+      </v-container>
+      <!-- details -->
+
+      <artist-event-details
+        :item="item"
+        :details-visible="detailsVisible"
+      ></artist-event-details>
+    </v-card>
+  </section>
 </template>
 
 <script>
-export default {}
+import toolbarEventSingle from '~/components/molecules/toolbar/EventSingleToolbar'
+import artistEventDetails from '~/components/molecules/artist/ArtistEventsItemDetails'
+const crg = require('country-reverse-geocoding').country_reverse_geocoding()
+const getCountryISO2 = require('country-iso-3-to-2')
+export default {
+  name: 'ArtistEventItem',
+
+  components: {
+    toolbarEventSingle,
+    artistEventDetails
+  },
+  props: {
+    item: {
+      type: Object || Array,
+      required: true
+    },
+    k: {
+      type: String
+    }
+  },
+  data() {
+    return {
+      detailsVisible: false,
+      country: {}
+    }
+  },
+  computed: {},
+
+  mounted() {
+    this.country = this.getCountry(
+      this.$props.item.location.lat,
+      this.$props.item.location.lng
+    )
+  },
+  methods: {
+    getCountry(lat, lng) {
+      const country = crg.get_country(lat, lng)
+
+      if (country) {
+        const lc = country.code.toLowerCase()
+
+        country.code2 = getCountryISO2(country.code).toLowerCase()
+        country.code = lc
+      }
+
+      return country
+    },
+
+    toggleDetails() {
+      this.detailsVisible = !this.detailsVisible
+      // some code to filter users
+    },
+    formatName(name) {
+      return name
+        .split('+')
+        .join(' ')
+        .toUpperCase()
+    },
+    uuidv4() {
+      return ([1e7] + -1e3 + -4e3 + -8e3 + -1e11).replace(/[018]/g, (c) =>
+        (
+          c ^
+          (crypto.getRandomValues(new Uint8Array(1))[0] & (15 >> (c / 4)))
+        ).toString(16)
+      )
+    },
+    showDetails() {}
+  }
+}
 </script>
 
 <style lang="scss" scoped></style>

@@ -1,10 +1,16 @@
+// apiKey: process.env.SONGKICK_API_KEY
 export const state = () => ({
-  counter: 0,
-  apiKey: process.env.SONGKICK_API_KEY
+  test: 1
 })
 
 export const mutations = {
   increment(state) {
     state.counter++
+  }
+}
+
+export const getters = {
+  getState(state) {
+    return state
   }
 }

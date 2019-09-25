@@ -1,9 +1,11 @@
 <template>
-  <div></div>
+  <div>PALNNER TOOLBAR</div>
 </template>
 
 <script>
-export default {}
+export default {
+  name: 'PlannerToolbar'
+}
 </script>
 
 <style lang="scss" scoped></style>

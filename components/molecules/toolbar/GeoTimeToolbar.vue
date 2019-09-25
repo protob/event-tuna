@@ -1,9 +1,15 @@
 <template>
-  <div></div>
+  <div>GEOTIME TOOLBAR</div>
 </template>
 
 <script>
-export default {}
+export default {
+  name: 'GeoTimeToolbar'
+}
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.row {
+  height: 100%;
+}
+</style>

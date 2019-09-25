@@ -1,5 +1,6 @@
 <template>
   <v-app dark>
+    <!---nav left-->
     <v-navigation-drawer
       v-model="drawer"
       :mini-variant="miniVariant"
@@ -8,56 +9,53 @@
       app
     >
       <v-list>
-        <v-list-item
-          v-for="(item, i) in items"
-          :key="i"
-          :to="item.to"
-          router
-          exact
-        >
-          <v-list-item-action>
-            <v-icon>{{ item.icon }}</v-icon>
-          </v-list-item-action>
-          <v-list-item-content>
-            <v-list-item-title v-text="item.title" />
-          </v-list-item-content>
+        <v-list-item>
+          <v-btn color="primary" dark>LOGIN</v-btn>
+        </v-list-item>
+
+        <v-list-item>
+          <v-btn color="primary" dark>REGISTER</v-btn>
+        </v-list-item>
+
+        <v-list-item>
+          <v-btn color="primary" dark>RECOVERY</v-btn>
         </v-list-item>
       </v-list>
     </v-navigation-drawer>
+
     <v-app-bar :clipped-left="clipped" fixed app>
       <v-app-bar-nav-icon @click.stop="drawer = !drawer" />
-      <v-btn icon @click.stop="miniVariant = !miniVariant">
-        <v-icon>mdi-{{ `chevron-${miniVariant ? 'right' : 'left'}` }}</v-icon>
-      </v-btn>
-      <v-btn icon @click.stop="clipped = !clipped">
-        <v-icon>mdi-application</v-icon>
-      </v-btn>
-      <v-btn icon @click.stop="fixed = !fixed">
-        <v-icon>mdi-minus</v-icon>
-      </v-btn>
-      <v-toolbar-title v-text="title" />
+
+      <!-- top toolbars-->
+
+      <v-row>
+        <v-btn depressed="depressed" color="primary">Update</v-btn>
+
+        <v-btn color="primary" dark>PLANNER</v-btn>
+        <v-btn color="primary" dark>GEO TIME 1</v-btn>
+        <v-btn color="primary" dark>GEO TIME 2</v-btn>
+        <v-btn color="primary" dark>SEARCH</v-btn>
+        <v-btn color="primary" dark>REGION</v-btn>
+
+        <nuxt-link to="/">
+          <v-btn color="primary" dark>HOME</v-btn>
+        </nuxt-link>
+        <v-btn color="primary" dark>LOGIN</v-btn>
+        <v-btn color="primary" dark>REGISTER</v-btn>
+      </v-row>
+
+      <!-- /top toolbars-->
       <v-spacer />
-      <v-btn icon @click.stop="rightDrawer = !rightDrawer">
-        <v-icon>mdi-menu</v-icon>
-      </v-btn>
     </v-app-bar>
+
+    <!--content-->
     <v-content>
       <v-container>
         <nuxt />
       </v-container>
     </v-content>
-    <v-navigation-drawer v-model="rightDrawer" :right="right" temporary fixed>
-      <v-list>
-        <v-list-item @click.native="right = !right">
-          <v-list-item-action>
-            <v-icon light>
-              mdi-repeat
-            </v-icon>
-          </v-list-item-action>
-          <v-list-item-title>Switch drawer (click me)</v-list-item-title>
-        </v-list-item>
-      </v-list>
-    </v-navigation-drawer>
+
+    <!--footer-->
     <v-footer :fixed="fixed" app>
       <span>&copy; 2019</span>
     </v-footer>
@@ -65,7 +63,23 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
+// import updaterBox from '~/components/molecules/toolbars/updaterBox'
+import geoTimeFilter from '~/components/molecules/toolbar/GeoTimeToolbar'
+import planner from '~/components/molecules/toolbar/PlannerToolbar'
+
+// import registerForm from '~/components/molecules/forms/registerForm'
+// import loginForm from '~/components/molecules/forms/loginForm'
+// import recoveryForm from '~/components/molecules/forms/recoveryForm'
+import userWidget from '~/components/molecules/user/userWidget'
+
 export default {
+  components() {
+    // loginForm,
+    //   recoveryForm,
+    //   registerForm,
+    updaterBox, geoTimeFilter, planner, userWidget
+  },
   data() {
     return {
       clipped: false,

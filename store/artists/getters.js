@@ -1,5 +1,9 @@
 export default {
-  list(state) {
-    return state.list
+  currentArtistId: (state) => {
+    return state.currentArtistId
+  },
+  getEventsByArtist: (state) => (artistId) => {
+    const artist = state.artists[artistId]
+    return artist
   }
 }
