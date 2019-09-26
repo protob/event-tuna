@@ -32,8 +32,11 @@
         <v-btn depressed="depressed" color="primary">Update</v-btn>
 
         <v-btn color="primary" dark>PLANNER</v-btn>
-        <v-btn color="primary" dark>GEO TIME 1</v-btn>
-        <v-btn color="primary" dark>GEO TIME 2</v-btn>
+
+        <geo-time-toolbar />
+
+        <!-- <v-btn color="primary" dark>GEO TIME 1</v-btn>
+        <v-btn color="primary" dark>GEO TIME 2</v-btn>-->
         <v-btn color="primary" dark>SEARCH</v-btn>
         <v-btn color="primary" dark>REGION</v-btn>
 
@@ -65,7 +68,7 @@
 <script>
 import { mapGetters } from 'vuex'
 // import updaterBox from '~/components/molecules/toolbars/updaterBox'
-import geoTimeFilter from '~/components/molecules/toolbar/GeoTimeToolbar'
+import GeoTimeToolbar from '~/components/molecules/toolbar/GeoTimeToolbar'
 import planner from '~/components/molecules/toolbar/PlannerToolbar'
 
 // import registerForm from '~/components/molecules/forms/registerForm'
@@ -74,11 +77,15 @@ import planner from '~/components/molecules/toolbar/PlannerToolbar'
 import userWidget from '~/components/molecules/user/userWidget'
 
 export default {
-  components() {
+  components: {
     // loginForm,
     //   recoveryForm,
     //   registerForm,
-    updaterBox, geoTimeFilter, planner, userWidget
+    GeoTimeToolbar,
+    // updaterBox,
+
+    planner,
+    userWidget
   },
   data() {
     return {
