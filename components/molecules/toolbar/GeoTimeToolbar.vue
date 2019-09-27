@@ -1,11 +1,11 @@
 <template>
   <!---col---->
   <v-container pa-0 ma-0 class="has-filter geo-time-filter">
-    <v-layout row wrap align-center>
-      <v-flex xs4>
+    <v-layout fluid wrap align-center>
+      <v-flex xs5>
         <v-container bg pa-0 ma-0 fill-height grid-list-md text-xs-center>
           <v-text-field
-            class="small-input"
+            class="small-input mx-1"
             :value="getStartDate"
             label="start date"
             small
@@ -15,14 +15,14 @@
             outlined
             @input="updateStartDate($event.target.value)"
           ></v-text-field>
-          <start-date />
+          <start-date class="mx-1" />
         </v-container>
       </v-flex>
       <!---col---->
-      <v-flex xs4>
-        <v-container bg pa-0 ma-0 fill-height grid-list-md text-xs-center>
+      <v-flex xs5>
+        <v-container fluid bg pa-0 ma-0 fill-height grid-list-md text-xs-center>
           <v-text-field
-            class="small-input"
+            class="small-input mx-1"
             :value="getEndDate"
             label="end date"
             solo
@@ -32,16 +32,15 @@
             @input="updateEndDate($event.target.value)"
           ></v-text-field>
 
-          <end-date />
+          <end-date class="mx-1" />
         </v-container>
       </v-flex>
 
-      <v-flex xs4>
-        <v-container bg pa-0 ma-0 fill-height grid-list-md text-xs-center>
-          <v-btn color="primary" @click="filterEventsByTimeRange">
+      <v-flex xs2>
+        <v-container fluid bg pa-0 ma-0 fill-height grid-list-md text-xs-center>
+          <v-btn class="mx-1" color="primary" @click="filterEventsByTimeRange">
             <font-awesome-icon :icon="['fas', 'search']"></font-awesome-icon>
           </v-btn>
-          <v-btn color="primary" onclick="alert('TODO')">Region</v-btn>
         </v-container>
       </v-flex>
     </v-layout>
@@ -85,6 +84,6 @@ export default {
   height: 100%;
 }
 .geo-time-filter {
-  max-width: 500px;
+  // max-width: 500px;
 }
 </style>

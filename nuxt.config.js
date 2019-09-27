@@ -116,8 +116,11 @@ module.exports = {
               'faPlus',
               'faThList',
               'faMapMarkerAlt',
+              'faCloudDownloadAlt',
+              'faClipboardList',
               'faStar',
-              'faUser'
+              'faUser',
+              'faUserPlus'
             ]
           }
           // {

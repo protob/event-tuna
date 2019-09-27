@@ -28,27 +28,77 @@
 
       <!-- top toolbars-->
 
-      <v-row>
-        <v-btn depressed="depressed" color="primary">Update</v-btn>
+      <v-container fluid>
+        <v-row d-flex justify-space-between class="top-bar-area">
+          <v-col cols="12" lg="3" md="3" sm="4" class="hidden-sm-and-down">
+            <v-btn depressed="depressed" class="mx-1" color="primary">
+              <font-awesome-icon
+                :icon="['fas', 'cloud-download-alt']"
+                class="hidden-lg-and-up"
+              ></font-awesome-icon>
+              <span class="hidden-md-and-down">Update</span>
+            </v-btn>
 
-        <v-btn color="primary" dark>PLANNER</v-btn>
+            <v-btn color="primary" dark class="mx-1">
+              <font-awesome-icon
+                :icon="['fas', 'clipboard-list']"
+                class="hidden-lg-and-up"
+              ></font-awesome-icon>
+              <span class="hidden-md-and-down">Planner</span>
+            </v-btn>
+          </v-col>
+          <v-col
+            cols="12"
+            lg="6"
+            md="6"
+            sm="4"
+            class="d-none d-md-flex justify-center hidden-sm-and-down"
+          >
+            <geo-time-toolbar class="hidden-sm-and-down" />
+            <v-btn color="primary" class="mx-1 hidden-md-and-up" dark>
+              <font-awesome-icon
+                :icon="['fas', 'calendar-alt']"
+              ></font-awesome-icon>
+            </v-btn>
+          </v-col>
 
-        <geo-time-toolbar />
+          <v-col cols="12" lg="3" md="3" sm="12" class="d-flex justify-end">
+            <nuxt-link to="/">
+              <v-btn color="primary" class="mx-1 d-none d-lg-flex" dark>
+                <span class="hidden-sm-and-down">HOME</span>
+              </v-btn>
+            </nuxt-link>
 
-        <!-- <v-btn color="primary" dark>GEO TIME 1</v-btn>
-        <v-btn color="primary" dark>GEO TIME 2</v-btn>-->
-        <v-btn color="primary" dark>SEARCH</v-btn>
-        <v-btn color="primary" dark>REGION</v-btn>
+            <v-btn
+              depressed="depressed"
+              class="mx-1"
+              color="primary hidden-md-and-up"
+            >
+              <font-awesome-icon
+                :icon="['fas', 'cloud-download-alt']"
+                class="hidden-lg-and-up"
+              ></font-awesome-icon>
+              <span class="hidden-md-and-down">Update</span>
+            </v-btn>
 
-        <nuxt-link to="/">
-          <v-btn color="primary" dark>HOME</v-btn>
-        </nuxt-link>
-        <v-btn color="primary" dark>LOGIN</v-btn>
-        <v-btn color="primary" dark>REGISTER</v-btn>
-      </v-row>
-
+            <v-btn color="primary" class="mx-1" dark>
+              <font-awesome-icon
+                :icon="['fas', 'user']"
+                class="hidden-lg-and-up"
+              ></font-awesome-icon>
+              <span class="hidden-md-and-down">LOGIN</span>
+            </v-btn>
+            <v-btn color="primary" class="mx-1" dark>
+              <font-awesome-icon
+                :icon="['fas', 'user-plus']"
+                class="hidden-lg-and-up"
+              ></font-awesome-icon>
+              <span class="hidden-md-and-down">REGISTER</span>
+            </v-btn>
+          </v-col>
+        </v-row>
+      </v-container>
       <!-- /top toolbars-->
-      <v-spacer />
     </v-app-bar>
 
     <!--content-->
@@ -66,30 +116,15 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
-// import updaterBox from '~/components/molecules/toolbars/updaterBox'
 import GeoTimeToolbar from '~/components/molecules/toolbar/GeoTimeToolbar'
-import planner from '~/components/molecules/toolbar/PlannerToolbar'
-
-// import registerForm from '~/components/molecules/forms/registerForm'
-// import loginForm from '~/components/molecules/forms/loginForm'
-// import recoveryForm from '~/components/molecules/forms/recoveryForm'
-import userWidget from '~/components/molecules/user/userWidget'
 
 export default {
   components: {
-    // loginForm,
-    //   recoveryForm,
-    //   registerForm,
-    GeoTimeToolbar,
-    // updaterBox,
-
-    planner,
-    userWidget
+    GeoTimeToolbar
   },
   data() {
     return {
-      clipped: false,
+      clipped: true,
       drawer: false,
       fixed: false,
       items: [
@@ -112,3 +147,4 @@ export default {
   }
 }
 </script>
+<style></style>
