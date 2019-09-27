@@ -1,7 +1,5 @@
 <template>
-  <section class="has-helper toolbar-artist-single">
-    <!-- <div class="component-helper">{{ $options.name }}</div> -->
-
+  <section class="has-helper toolbar-artist-single" :data-name="$options.name">
     <v-container class="d-flex justify-space-between px-0">
       <div>
         <v-btn color="primary" dark class="mr-2" @click="fetchEvents"

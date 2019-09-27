@@ -25,6 +25,22 @@ export default {
   components: {
     eventsByArtistListing,
     artistsByCatsListing
+  },
+  mounted() {
+    this.addHelpers()
+  },
+  methods: {
+    addHelpers() {
+      const elems = document.querySelectorAll('.has-helper')
+      elems.forEach((el, idx) => {
+        const div = document.createElement('div')
+        const name = el.getAttribute('data-name')
+
+        div.innerHTML = ` <div class="component-helper">${name}</div>`
+
+        el.appendChild(div)
+      })
+    }
   }
 }
 </script>

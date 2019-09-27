@@ -1,6 +1,5 @@
 <template>
-  <section class="has-helper toolbar-event-single">
-    <!-- <div class="component-helper">{{ $options.name }}</div> -->
+  <section class="has-helper toolbar-event-single" :data-name="$options.name">
     <font-awesome-icon
       class="red--text d-inline-block mx-1"
       :icon="['fas', 'map-marker-alt']"

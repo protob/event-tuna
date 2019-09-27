@@ -1,6 +1,8 @@
 <template>
-  <v-card class="has-helper item ma-1 py-2 px-4 light-blue darken-4">
-    <!-- <div class="component-helper">{{ $options.name }}</div> -->
+  <v-card
+    class="has-helper item ma-1 py-2 px-4 light-blue darken-4"
+    :data-name="$options.name"
+  >
     <div class="category-stats">
       <v-container fluid py-0>
         <v-row class="wrap align-center">

@@ -1,6 +1,5 @@
 <template>
-  <section class="has-helper artist-event-item">
-    <!-- <div class="component-helper">{{ $options.name }}</div> -->
+  <section class="has-helper artist-event-item" :data-name="$options.name">
     <v-card class="item ma-1 py-2 px-4">
       <div>
         <div class="subtitle">{{ item.displayName }}</div>

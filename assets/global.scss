@@ -3,14 +3,14 @@ $font-size-root: 20px;
 .small-input {
 
 
-    .v-input__control,
-    .v-text-field__slot,
-    .v-text-field__slot,
-    .v-input__slot {
-        min-height: 36px !important;
-        max-height: 36px !important;
+  .v-input__control,
+  .v-text-field__slot,
+  .v-text-field__slot,
+  .v-input__slot {
+    min-height: 36px !important;
+    max-height: 36px !important;
 
-    }
+  }
 
 }
 
@@ -18,18 +18,18 @@ $font-size-root: 20px;
 
 .select-small-wrap {
 
-    .v-input__control,
-    .v-text-field__slot,
-    .v-text-field__slot,
-    .v-input__slot {
-        min-height: 36px !important;
-        max-height: 36px !important;
+  .v-input__control,
+  .v-text-field__slot,
+  .v-text-field__slot,
+  .v-input__slot {
+    min-height: 36px !important;
+    max-height: 36px !important;
 
-    }
+  }
 
-    .v-input__append-inner {
-        margin-top: 5px !important;
-    }
+  .v-input__append-inner {
+    margin-top: 5px !important;
+  }
 
 
 }
@@ -37,14 +37,16 @@ $font-size-root: 20px;
 
 //-----------commaon helper------------
 .has-helper {
-    position: relative;
+  position: relative;
 }
 
 .component-helper {
-    background-color: red;
-    position        : absolute;
-    top             : 0;
-    left            : 0;
-    z-index         : 111;
-
+  background-color: black;
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  z-index: 111;
+  opacity: 1;
+  padding: 4px;
+  color: red;
 }

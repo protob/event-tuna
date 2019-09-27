@@ -1,5 +1,5 @@
 <template>
-  <section class="has-helper toolbar-cats-main">
+  <section class="has-helper toolbar-cats-main" :data-name="$options.name">
     <v-container>
       <v-row no-gutters>
         <v-col>

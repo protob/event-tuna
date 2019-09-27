@@ -1,7 +1,5 @@
 <template>
-  <section class="cats-listing has-helper">
-    <!-- <div class="component-helper">{{ $options.name }}</div> -->
-
+  <section class="cats-listing has-helper" :data-name="$options.name">
     <!-- global toolbar-->
     <v-card class="item ma-1 py-4 px-4 grey darken-4">
       <v-row no-gutters>

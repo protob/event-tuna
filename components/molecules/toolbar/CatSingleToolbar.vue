@@ -1,7 +1,5 @@
 <template>
-  <section class="has-helper toolbar-cat-single">
-    <!-- <div class="component-helper">{{ $options.name }}</div> -->
-
+  <section class="has-helper toolbar-cat-single" :data-name="$options.name">
     <v-container my-0 py-0>
       <v-row>
         <v-col :cols="12" :md="6" class="d-flex justify-start my-0 py-0">

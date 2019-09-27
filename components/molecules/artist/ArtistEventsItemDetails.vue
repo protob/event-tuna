@@ -1,7 +1,9 @@
 <template>
-  <section v-if="detailsVisible" class="has-helper artist-event-detials">
-    <div class="component-helper">{{ $options.name }}</div>
-
+  <section
+    v-if="detailsVisible"
+    class="has-helper artist-event-detials"
+    :data-name="$options.name"
+  >
     <v-card
       v-for="(v, k) in item"
       :key="k"
@@ -13,8 +15,13 @@
           <div class="subtitle-1 data-v">
             <div v-if="typeof v === 'object' && v instanceof Array">
               <div v-for="(vv, kk) in v[1]" v-bind:key="kk">
-                <v-container fluid="fluid" pt-0="pt-0" pb-0="pb-0" class="grey">
-                  <v-row :align="'start'" :justify="'start'">
+                <v-container
+                  fluid="fluid"
+                  pt-0="pt-0"
+                  pb-0="pb-0"
+                  class="light-blue darken-4"
+                >
+                  <v-row :align="'start'" :justify="'start'" class="pa-2">
                     <strong>{{ kk }}:</strong>
                     <span>{{ vv }}</span>
                   </v-row>

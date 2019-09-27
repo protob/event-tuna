@@ -1,12 +1,14 @@
 <template>
-  <section class="has-helper artist-cat-stats-single">
-    <!-- <div class="component-helper">{{ $options.name }}</div> -->
+  <section
+    class="has-helper artist-cat-stats-single"
+    :data-name="$options.name"
+  >
     <v-card class="item ma-1 py-2 px-4">
       <div class="stats-artist-wrap">
         <div class="my-2">
           <v-btn @click="showArtistEvents">Events Details</v-btn>
         </div>
-        <!--  LISTING -->
+        <!--  LISTING  -->
         <section v-if="Object.values(getArtistStats(catId, artistId))[0]">
           <div
             v-for="(v, k, idx) in getArtistStats(catId, artistId).countries"
@@ -20,9 +22,9 @@
                     <span>{{ k }} events</span>
                   </v-card>
                   <v-card class="ma-1 pa-2 elevation-0">
-                    <span>{{
-                      Object.values(v).reduce((a, b) => a + b, 0)
-                    }}</span>
+                    <span>
+                      {{ Object.values(v).reduce((a, b) => a + b, 0) }}
+                    </span>
                   </v-card>
                 </v-row>
               </v-container>
@@ -36,9 +38,9 @@
               pb-0="pb-0"
             >
               <v-row :align="'start'" :justify="'start'">
-                <v-card class="ma-1 py-2 px-4 blue-grey darken-4">{{
-                  kk
-                }}</v-card>
+                <v-card class="ma-1 py-2 px-4 blue-grey darken-4">
+                  {{ kk }}
+                </v-card>
                 <v-card class="ma-1 pa-2 elevation-0">
                   <a href @click.prevent="filterEventsByCountry(kk)">
                     <span class="flag-icon" :class="['flag-icon-' + kk]"></span>
