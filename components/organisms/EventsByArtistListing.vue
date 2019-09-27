@@ -1,30 +1,30 @@
 <template>
   <section class="has-helper events-listing">
-    <div class="component-helper">{{ $options.name }}</div>
+    <!-- <div class="component-helper">{{ $options.name }}</div> -->
 
     <v-card class="item ma-1 py-4 px-4 grey darken-4">
-      <v-container>
-        <v-layout row>
-          <v-flex md5>
-            <div class="display-1" v-if="getCurrentCountryCode">
+      <v-container class="py-0">
+        <v-row>
+          <v-col :cols="12" :md="8" class="px-0">
+            <div class="headline text-uppercase" v-if="getCurrentCountryCode">
               <span>
                 {{ getCurrentCountryCode }}
                 -
               </span>
               Events
             </div>
-            <div v-else class="display-1">
+            <div v-else class="headline text-uppercase">
               <span v-if="currentArtistId">
                 {{ getArtistNameById(currentArtistId) }}
                 -
               </span>
               Events
             </div>
-          </v-flex>
-          <v-flex md7>
+          </v-col>
+          <v-col :cols="12" :md="4" class="pa-0">
             <EventsGlobalToolbar class="select-small-wrap" />
-          </v-flex>
-        </v-layout>
+          </v-col>
+        </v-row>
       </v-container>
     </v-card>
     <div v-bar class="events-listing-inner">

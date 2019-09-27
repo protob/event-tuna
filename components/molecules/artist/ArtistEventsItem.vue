@@ -1,26 +1,15 @@
 <template>
   <section class="has-helper artist-event-item">
-    <div class="component-helper">{{ $options.name }}</div>
+    <!-- <div class="component-helper">{{ $options.name }}</div> -->
     <v-card class="item ma-1 py-2 px-4">
       <div>
-        <div class="title">{{ item.displayName }}</div>
-        <div class="date">{{ item.start.date }}</div>
+        <div class="subtitle">{{ item.displayName }}</div>
       </div>
-      <div>
-        <div class="my-2">
-          <v-btn
-            disabled="disabled"
-            outlined="outlined"
-            depressed="depressed"
-            small="small"
-            color="primary"
-            >{{ item.type }}</v-btn
-          >
-        </div>
-      </div>
-      <v-container fluid="fluid" pt-0="pt-0" pb-0="pb-0">
-        <v-row :align="'start'" :justify="'start'">
-          <div class="mr-2 my-2">
+
+      <!-- <div class="my-2"> -->
+      <div class="toolbar-wrap d-flex align-center justify-space-between">
+        <div class="buttons-wrap mr-2 d-inline-block">
+          <div class="mr-2 my-2 d-inline-block">
             <v-btn
               depressed="depressed"
               small="small"
@@ -29,19 +18,33 @@
               >details</v-btn
             >
           </div>
-          <a target="_blank" href="https://google.pl">
-            <div class="my-2">
+          <a target="_blank" href="https://google.pl" class="d-inline-block">
+            <div class="my-2 mr-2">
               <v-btn depressed="depressed" small="small" color="primary"
                 >Link</v-btn
               >
             </div>
           </a>
-          <toolbar-event-single :country="country" />
-        </v-row>
-      </v-container>
+
+          <v-btn
+            disabled="disabled"
+            outlined="outlined"
+            depressed="depressed"
+            small="small"
+            color="primary"
+            class="mr-2"
+            >{{ item.type }}</v-btn
+          >
+        </div>
+        <div>
+          <div class="date subtitle d-inline-block">{{ item.start.date }}</div>
+          <toolbar-event-single :country="country" class="d-inline-block" />
+        </div>
+      </div>
       <!-- details -->
 
       <artist-event-details
+        class="d-inline-block"
         :item="item"
         :details-visible="detailsVisible"
       ></artist-event-details>

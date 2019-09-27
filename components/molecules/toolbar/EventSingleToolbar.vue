@@ -1,21 +1,20 @@
 <template>
   <section class="has-helper toolbar-event-single">
-    <div class="component-helper">{{ $options.name }}</div>
-    <v-card class="ma-1 pa-2 elevation-0">
-      <span
-        v-if="country"
-        class="flag-icon"
-        :class="['flag-icon-' + country.code2]"
-      ></span>
-      <font-awesome-icon
-        class="red--text"
-        :icon="['fas', 'map-marker-alt']"
-      ></font-awesome-icon>
-      <font-awesome-icon
-        class="red--text"
-        :icon="['fas', 'star']"
-      ></font-awesome-icon>
-    </v-card>
+    <!-- <div class="component-helper">{{ $options.name }}</div> -->
+    <font-awesome-icon
+      class="red--text d-inline-block mx-1"
+      :icon="['fas', 'map-marker-alt']"
+    ></font-awesome-icon>
+    <span
+      v-if="country"
+      class="flag-icon d-inline-block mr-1"
+      :class="['flag-icon-' + country.code2]"
+    ></span>
+
+    <font-awesome-icon
+      class="red--text d-inline-block mr-1"
+      :icon="['fas', 'star']"
+    ></font-awesome-icon>
   </section>
 </template>
 
