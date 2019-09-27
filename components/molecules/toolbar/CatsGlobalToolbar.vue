@@ -1,12 +1,9 @@
 <template>
   <section class="has-helper toolbar-cats-main">
-    <div class="component-helper">{{ $options.name }}</div>
-
     <v-container>
       <v-row no-gutters>
         <v-col>
-          <!-- <add-cat-form></add-cat-form> -->
-          <v-btn color="primary" dark>+</v-btn>
+          <add-cat-form></add-cat-form>
         </v-col>
         <v-col>
           <v-select
@@ -23,10 +20,10 @@
 </template>
 
 <script>
-// import addCatForm from '~/components/molecules/forms/addCatForm'
+import addCatForm from '~/components/molecules/form/formModal'
 export default {
   name: 'CatsGlobalToolbar',
-  // components: { addCatForm },
+  components: { addCatForm },
   props: [],
   data() {
     return {

@@ -1,12 +1,12 @@
 <template>
   <section class="has-helper artist-cat-stats-single">
-    <div class="component-helper">{{ $options.name }}</div>
+    <!-- <div class="component-helper">{{ $options.name }}</div> -->
     <v-card class="item ma-1 py-2 px-4">
       <div class="stats-artist-wrap">
         <div class="my-2">
           <v-btn @click="showArtistEvents">Events Details</v-btn>
         </div>
-        <!--  section -->
+        <!--  LISTING -->
         <section v-if="Object.values(getArtistStats(catId, artistId))[0]">
           <div
             v-for="(v, k, idx) in getArtistStats(catId, artistId).countries"

@@ -1,9 +1,9 @@
 <template>
   <article class="has-helper" @artistCatDetailsToggle="toggleDetails">
     <div class="item">
-      <v-card class="item ma-1 py-4 px-4 grey darken-4">
-        <div class="component-helper">{{ $options.name }}</div>
-        <div class="display-1">{{ cat.displayName }}</div>
+      <v-card class="item ma-1 py-4 px-4 light-blue darken-4">
+        <!-- <div class="component-helper">{{ $options.name }}</div> -->
+        <div class="headline text-uppercase mb-2">{{ cat.displayName }}</div>
         <toolbar-cat-single :catId="cat.id" :catName="cat.displayName" />
       </v-card>
 
@@ -25,21 +25,19 @@
 </template>
 
 <script>
-import { mapGetters, mapState } from 'vuex'
-import toolbarArtistSingle from '~/components/molecules/toolbar/ArtistSingleToolbar'
+import { mapGetters } from 'vuex'
+
 import toolbarCatSingle from '~/components/molecules/toolbar/CatSingleToolbar'
-import ArtistCatsStatsTotal from '~/components/molecules/artist/ArtistCatsStatsTotals'
-import artistCatStatsSingle from '~/components/molecules/artist/ArtistCatsStatsSingle'
+import ArtistCatsStatsTotal from '~/components/molecules/artist/catsStatsTotals'
 import artistItem from '~/components/molecules/artist/artistItem'
 
 const { query } = require('what-country')
 export default {
   name: 'ArtistCatItem',
   components: {
-    toolbarArtistSingle,
     toolbarCatSingle,
     ArtistCatsStatsTotal,
-    artistCatStatsSingle,
+
     artistItem
   },
   props: {

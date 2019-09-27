@@ -1,52 +1,31 @@
 <template>
   <section class="has-helper toolbar-cat-single">
-    <div class="component-helper">{{ $options.name }}</div>
+    <!-- <div class="component-helper">{{ $options.name }}</div> -->
 
-    <v-layout row wrap justify-start>
-      <!--add cat form-->
-      <v-flex md2>
-        <!-- <add-artist-form :cat-id="catId"></add-artist-form> -->
-        <v-btn color="primary" dark>+</v-btn>
-      </v-flex>
-      <!--add cat form-->
-      <v-flex md3>
-        <!-- <edit-cat-form :cat-id="catId"></edit-cat-form> -->
-        <v-btn color="primary" dark>E</v-btn>
-
-        <v-dialog v-model="dialog" persistent max-width="290">
-          <template v-slot:activator="{ on }">
-            <v-btn color="primary" dark v-on="on">
-              <font-awesome-icon
-                class="white--text"
-                :icon="['fas', 'times']"
-              ></font-awesome-icon>
-            </v-btn>
-          </template>
-          <v-card>
-            <v-card-title class="headline">Delete category</v-card-title>
-            <v-card-text>Are you sure?</v-card-text>
-            <v-card-actions>
-              <div class="flex-grow-1"></div>
-              <v-btn color="green darken-1" text @click="deleteCat"
-                >Proceed</v-btn
-              >
-              <v-btn color="red darken-1" text @click="dialog = false"
-                >Cancel</v-btn
-              >
-            </v-card-actions>
-          </v-card>
-        </v-dialog>
-      </v-flex>
-    </v-layout>
+    <v-container my-0 py-0>
+      <v-row>
+        <v-col :cols="12" :md="6" class="d-flex justify-start my-0 py-0">
+          <!-- <add-artist-form :cat-id="catId"></add-artist-form> -->
+          <form-modal :text="'+'" />
+        </v-col>
+        <!--add cat form-->
+        <v-col cols="12" :md="6" class="d-flex justify-end my-0 py-0">
+          <!-- <edit-cat-form :cat-id="catId"></edit-cat-form> -->
+          <form-modal :text="'e'" :margins="1" />
+          <dialog-modal :text="'x'" />
+        </v-col>
+      </v-row>
+    </v-container>
   </section>
 </template>
 
 <script>
-// import editCatForm from '~/components/molecules/forms/editCatform'
+import formModal from '~/components/molecules/form/formModal'
+import dialogModal from '~/components/molecules/form/dialogModal'
 // import addArtistForm from '~/components/molecules/forms/addArtistForm'
 export default {
   name: 'CatSingleToolbar',
-  // components: { editCatForm, addArtistForm },
+  components: { formModal, dialogModal },
   props: ['totalEvent', 'catId', 'catName'],
   data() {
     return {
@@ -58,7 +37,6 @@ export default {
   methods: {
     deleteCat() {
       this.dialog = false
-
       this.$store.dispatch('cats/deleteCat', this.catId)
       this.dialog = false
     }

@@ -3,13 +3,13 @@
     <v-container class="main-container" fluid ma-0 pa-0 fill-height>
       <v-row no-gutters>
         <v-col cols="sm">
-          <v-card class="pa-2 bg-main elevation-0">
-            <cats-listing />
+          <v-card class="pa-2 transparent elevation-0">
+            <artists-by-cats-listing />
           </v-card>
         </v-col>
         <v-col cols="sm">
-          <v-card class="pa-2 events-listing-wrap bg-main elevation-0">
-            <events-listing />
+          <v-card class="pa-2 events-listing-wrap transparent elevation-0">
+            <events-by-artist-listing />
           </v-card>
         </v-col>
       </v-row>
@@ -18,27 +18,18 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
-// import loginFormRegular from '~/components/molecules/forms/loginFormRegular'
-import eventsListing from '~/components/organisms/allArtistsEventsListing'
-import catsListing from '~/components/organisms/allArtistsCatsListing'
-
-import Logo from '~/components/Logo.vue'
-import VuetifyLogo from '~/components/VuetifyLogo.vue'
+import eventsByArtistListing from '~/components/organisms/EventsByArtistListing'
+import artistsByCatsListing from '~/components/organisms/ArtistsByCatsListing'
 
 export default {
   components: {
-    eventsListing,
-    catsListing
+    eventsByArtistListing,
+    artistsByCatsListing
   }
 }
 </script>
 <style lang="scss" scoped>
 .main-container {
   max-width: 1200px;
-}
-
-.bg-main {
-  background-color: #303030;
 }
 </style>

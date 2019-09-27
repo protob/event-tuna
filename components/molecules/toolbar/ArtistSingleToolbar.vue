@@ -1,43 +1,32 @@
 <template>
   <section class="has-helper toolbar-artist-single">
-    <div class="component-helper">{{ $options.name }}</div>
+    <!-- <div class="component-helper">{{ $options.name }}</div> -->
 
-    <font-awesome-icon
-      class="red--text"
-      :icon="['fas', 'map-marker']"
-    ></font-awesome-icon>
-    {{ totalEvents(catId, artistId) }}
-    <v-dialog v-model="dialog" persistent max-width="290">
-      <template v-slot:activator="{ on }">
-        <v-btn color="primary" dark v-on="on">
-          <font-awesome-icon :icon="['fas', 'times']"></font-awesome-icon>
-        </v-btn>
-      </template>
-      <v-card>
-        <v-card-title class="headline">Delete {{ artistName }}</v-card-title>
-        <v-card-text>Are you sure?</v-card-text>
-        <v-card-actions>
-          <div class="flex-grow-1"></div>
-          <v-btn color="green darken-1" text @click="deleteArtist"
-            >Proceed</v-btn
-          >
-          <v-btn color="red darken-1" text @click="dialog = false"
-            >Cancel</v-btn
-          >
-        </v-card-actions>
-      </v-card>
-    </v-dialog>
+    <v-container class="d-flex justify-space-between px-0">
+      <div>
+        <v-btn color="primary" dark class="mr-2" @click="fetchEvents"
+          >Update</v-btn
+        >
+        <div class="d-inline-block">
+          <font-awesome-icon
+            class="red--text"
+            :icon="['fas', 'map-marker']"
+          ></font-awesome-icon>
+          {{ totalEvents(catId, artistId) }}
+        </div>
+      </div>
 
-    <v-btn color="primary" dark @click="fetchEvents">Update</v-btn>
+      <dialog-modal :text="'x'" />
+    </v-container>
   </section>
 </template>
 
 <script>
 import { mapGetters } from 'vuex'
-
+import dialogModal from '~/components/molecules/form/dialogModal'
 export default {
   name: 'ArtistSingleToolbar',
-  components: {},
+  components: { dialogModal },
   props: ['artistId', 'artistName', 'catId'],
   data() {
     return {

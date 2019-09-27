@@ -1,6 +1,6 @@
 <template>
   <section class="has-helper artist-item">
-    <div class="component-helper">{{ $options.name }}</div>
+    <!-- <div class="component-helper">{{ $options.name }}</div> -->
     <v-card class="item ma-1 py-2 px-4 grey darken-4">
       <div class="headline">
         <v-card
@@ -9,8 +9,8 @@
           style="float:left"
           >{{ idx + 1 }}</v-card
         >
-        <h1>{{ artistIdMap[artistId] }}</h1>
-        <h3>{{ artistId }}</h3>
+        <h1 class="headline d-inline-block">{{ artistIdMap[artistId] }}</h1>
+        <h3 class="headline d-inline-block">- {{ artistId }}</h3>
       </div>
       <toolbar-artist-single
         :cat-id="catId"

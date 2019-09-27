@@ -1,18 +1,22 @@
 <template>
   <section class="cats-listing has-helper">
-    <div class="component-helper">{{ $options.name }}</div>
+    <!-- <div class="component-helper">{{ $options.name }}</div> -->
 
-    <!-- top toolbar-->
+    <!-- global toolbar-->
     <v-card class="item ma-1 py-4 px-4 grey darken-4">
       <v-row no-gutters>
         <v-col>
-          <div class="display-1">Categories</div>
+          <v-container px-0 mx-0>
+            <div class="headline text-uppercase">Categories</div>
+          </v-container>
         </v-col>
         <v-col>
           <CatsGlobalToolbar class="select-small-wrap" />
         </v-col>
       </v-row>
     </v-card>
+
+    <!-- listing-->
     <div v-bar class="cats-listing-inner">
       <div>
         <artist-cat-item
@@ -27,18 +31,14 @@
 
 <script>
 import Vue2Filters from 'vue2-filters'
-import { mapState, mapGetters } from 'vuex'
-// import toolbarArtistSingle from '~/components/molecules/toolbar/ArtistSingleToolbar'
-// import toolbarCatSingle from '~/components/molecules/toolbar/CatSingleToolbar'
+import { mapGetters } from 'vuex'
+
 import CatsGlobalToolbar from '~/components/molecules/toolbar/CatsGlobalToolbar'
 import artistCatItem from '~/components/molecules/artist/ArtistCatItem'
-import { fireDb } from '~/plugins/firebase.js'
 
 export default {
   name: 'AllArtistsCatsListing',
   components: {
-    // toolbarArtistSingle,
-    // toolbarCatSingle,
     CatsGlobalToolbar,
     artistCatItem
   },
