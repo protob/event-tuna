@@ -14,17 +14,24 @@
         </div>
       </div>
 
-      <dialog-modal :text="'x'" />
+      <v-btn
+        color="primary"
+        class="mx-1"
+        dark
+        @click="showModal('confirm_delete_artist')"
+      >
+        <font-awesome-icon :icon="['fas', 'times']"></font-awesome-icon>
+      </v-btn>
     </v-container>
   </section>
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
-import DialogModal from '~/components/molecules/form/DialogModal'
+import { mapGetters, mapMutations } from 'vuex'
+
 export default {
   name: 'ArtistSingleToolbar',
-  components: { DialogModal },
+  components: {},
   props: ['artistId', 'artistName', 'catId'],
   data() {
     return {
@@ -38,6 +45,7 @@ export default {
   },
   mounted() {},
   methods: {
+    ...mapMutations(['showModal']),
     deleteArtist() {
       const obj = { artistId: this.artistId, catId: this.catId }
       this.$store.dispatch('cats/deleteArtistFromCat', obj)

@@ -1,5 +1,5 @@
 <template>
-  <section class="has-helper toolbar-cat-single" :data-name="$options.name">
+  <section class="has-helpers toolbar-cat-single" :data-name="$options.name">
     <v-container my-0 py-0>
       <v-row>
         <v-col :cols="12" :md="6" class="d-flex justify-start my-0 py-0">
@@ -22,8 +22,15 @@
           >
             <font-awesome-icon :icon="['fas', 'edit']"></font-awesome-icon>
           </v-btn>
-
-          <dialog-modal :text="'x'" />
+          <v-btn
+            color="primary"
+            class="mx-1"
+            dark
+            @click="showModal('confirm_delete_category')"
+          >
+            <font-awesome-icon :icon="['fas', 'times']"></font-awesome-icon>
+          </v-btn>
+          <!-- <dialog-modal :text="'x'" /> -->
         </v-col>
       </v-row>
     </v-container>
@@ -32,10 +39,10 @@
 
 <script>
 import { mapMutations } from 'vuex'
-import DialogModal from '~/components/molecules/form/DialogModal'
+
 export default {
   name: 'CatSingleToolbar',
-  components: { DialogModal },
+  components: {},
   props: ['totalEvent', 'catId', 'catName'],
   data() {
     return {

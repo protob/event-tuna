@@ -123,7 +123,7 @@
         <nuxt />
       </v-container>
     </v-content>
-    <form-modal />
+    <base-modal />
     <!--footer-->
     <v-footer :fixed="fixed" app>
       <span>&copy; 2019</span>
@@ -134,11 +134,11 @@
 <script>
 import { mapMutations } from 'vuex'
 import GeoTimeToolbar from '~/components/molecules/toolbar/GeoTimeToolbar'
-import FormModal from '~/components/molecules/form/FormModal'
+import BaseModal from '~/components/molecules/form/BaseModal'
 export default {
   components: {
     GeoTimeToolbar,
-    FormModal
+    BaseModal
   },
   data() {
     return {

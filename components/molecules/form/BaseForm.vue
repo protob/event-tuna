@@ -33,26 +33,26 @@ const ADD_ITEM_SCHEMA = {
 const LOGIN_SCHEMA = {
   email: {
     component: FormText,
-    label: 'EMAIL'
+    label: 'Email'
   },
   password: {
     component: FormText,
-    label: 'PASSWORD'
+    label: 'Password'
   }
 }
 
 const REGISTER_SCHEMA = {
   name: {
     component: FormText,
-    label: 'EMAIL'
+    label: 'Name'
   },
   email: {
     component: FormText,
-    label: 'EMAIL'
+    label: 'Email'
   },
   password: {
     component: FormText,
-    label: 'PASSWORD'
+    label: 'Password'
   }
 }
 
@@ -70,11 +70,12 @@ export default {
     },
     schema() {
       const schema =
-        this.formName.toLowercase == 'Login'
+        this.formName.toLowerCase() == 'login'
           ? LOGIN_SCHEMA
-          : this.formName.toLowercase == 'Register'
+          : this.formName.toLowerCase() == 'register'
           ? REGISTER_SCHEMA
           : ADD_ITEM_SCHEMA
+      console.log(schema)
       return schema
     }
   },

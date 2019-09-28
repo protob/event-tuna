@@ -1,13 +1,15 @@
 // apiKey: process.env.SONGKICK_API_KEY
 export const state = () => ({
   modalVisible: false,
-  modalComponent: null
+  modalComponent: null,
+  isConfirm: false
 })
 
 export const mutations = {
   showModal(state, componentName) {
     state.modalVisible = true
     state.modalComponent = componentName
+    state.isConfirm = componentName.includes('confirm')
   },
   hideModal(state) {
     state.modalVisible = false
