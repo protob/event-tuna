@@ -3,7 +3,14 @@
     <v-container>
       <v-row no-gutters>
         <v-col>
-          <add-cat-form></add-cat-form>
+          <v-btn
+            color="primary"
+            class="mx-1"
+            dark
+            @click="showModal('add_category')"
+          >
+            <font-awesome-icon :icon="['fas', 'plus']"></font-awesome-icon>
+          </v-btn>
         </v-col>
         <v-col>
           <v-select
@@ -20,10 +27,10 @@
 </template>
 
 <script>
-import addCatForm from '~/components/molecules/form/formModal'
+import { mapMutations } from 'vuex'
 export default {
   name: 'CatsGlobalToolbar',
-  components: { addCatForm },
+  components: {},
   props: [],
   data() {
     return {
@@ -34,6 +41,8 @@ export default {
   computed: {},
   mounted() {},
   methods: {
+    ...mapMutations(['showModal']),
+
     sortItems() {
       // console.log(this.sorting)
       // this.$store.dispatch('cats/sortCats', this.sorting)

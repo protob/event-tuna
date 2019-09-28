@@ -25,7 +25,15 @@
 
 <script>
 export default {
-  props: ['text']
+  props: ['text'],
+  data() {
+    return {
+      dialog: false
+    }
+  },
+  methods: {
+    deleteCat() {}
+  }
 }
 </script>
 

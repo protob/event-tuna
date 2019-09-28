@@ -21,10 +21,10 @@
 
 <script>
 import { mapGetters } from 'vuex'
-import dialogModal from '~/components/molecules/form/dialogModal'
+import DialogModal from '~/components/molecules/form/DialogModal'
 export default {
   name: 'ArtistSingleToolbar',
-  components: { dialogModal },
+  components: { DialogModal },
   props: ['artistId', 'artistName', 'catId'],
   data() {
     return {

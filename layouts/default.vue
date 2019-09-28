@@ -10,15 +10,21 @@
     >
       <v-list>
         <v-list-item>
-          <v-btn color="primary" dark>LOGIN</v-btn>
+          <v-btn color="primary" dark @click="triggerForm('login')"
+            >LOGIN</v-btn
+          >
         </v-list-item>
 
         <v-list-item>
-          <v-btn color="primary" dark>REGISTER</v-btn>
+          <v-btn color="primary" @click="triggerForm('register')" dark
+            >REGISTER</v-btn
+          >
         </v-list-item>
 
         <v-list-item>
-          <v-btn color="primary" dark>RECOVERY</v-btn>
+          <v-btn color="primary" @click="triggerForm('recovery')" dark
+            >RECOVERY</v-btn
+          >
         </v-list-item>
       </v-list>
     </v-navigation-drawer>
@@ -81,14 +87,24 @@
               <span class="hidden-md-and-down">Update</span>
             </v-btn>
 
-            <v-btn color="primary" class="mx-1" dark>
+            <v-btn
+              color="primary"
+              class="mx-1"
+              dark
+              @click="showModal('Login')"
+            >
               <font-awesome-icon
                 :icon="['fas', 'user']"
                 class="hidden-lg-and-up"
               ></font-awesome-icon>
               <span class="hidden-md-and-down">LOGIN</span>
             </v-btn>
-            <v-btn color="primary" class="mx-1" dark>
+            <v-btn
+              color="primary"
+              class="mx-1"
+              dark
+              @click="showModal('Register')"
+            >
               <font-awesome-icon
                 :icon="['fas', 'user-plus']"
                 class="hidden-lg-and-up"
@@ -107,7 +123,7 @@
         <nuxt />
       </v-container>
     </v-content>
-
+    <form-modal />
     <!--footer-->
     <v-footer :fixed="fixed" app>
       <span>&copy; 2019</span>
@@ -116,11 +132,13 @@
 </template>
 
 <script>
+import { mapMutations } from 'vuex'
 import GeoTimeToolbar from '~/components/molecules/toolbar/GeoTimeToolbar'
-
+import FormModal from '~/components/molecules/form/FormModal'
 export default {
   components: {
-    GeoTimeToolbar
+    GeoTimeToolbar,
+    FormModal
   },
   data() {
     return {
@@ -144,6 +162,9 @@ export default {
       rightDrawer: false,
       title: 'Vuetify.js'
     }
+  },
+  methods: {
+    ...mapMutations(['showModal'])
   }
 }
 </script>

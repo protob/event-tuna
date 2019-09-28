@@ -3,13 +3,26 @@
     <v-container my-0 py-0>
       <v-row>
         <v-col :cols="12" :md="6" class="d-flex justify-start my-0 py-0">
-          <!-- <add-artist-form :cat-id="catId"></add-artist-form> -->
-          <form-modal :text="'+'" />
+          <v-btn
+            color="primary"
+            class="mx-1"
+            dark
+            @click="showModal('add_artist')"
+          >
+            <font-awesome-icon :icon="['fas', 'plus']"></font-awesome-icon>
+          </v-btn>
         </v-col>
         <!--add cat form-->
         <v-col cols="12" :md="6" class="d-flex justify-end my-0 py-0">
-          <!-- <edit-cat-form :cat-id="catId"></edit-cat-form> -->
-          <form-modal :text="'e'" :margins="1" />
+          <v-btn
+            color="primary"
+            class="mx-1"
+            dark
+            @click="showModal('edit_category')"
+          >
+            <font-awesome-icon :icon="['fas', 'edit']"></font-awesome-icon>
+          </v-btn>
+
           <dialog-modal :text="'x'" />
         </v-col>
       </v-row>
@@ -18,12 +31,11 @@
 </template>
 
 <script>
-import formModal from '~/components/molecules/form/formModal'
-import dialogModal from '~/components/molecules/form/dialogModal'
-// import addArtistForm from '~/components/molecules/forms/addArtistForm'
+import { mapMutations } from 'vuex'
+import DialogModal from '~/components/molecules/form/DialogModal'
 export default {
   name: 'CatSingleToolbar',
-  components: { formModal, dialogModal },
+  components: { DialogModal },
   props: ['totalEvent', 'catId', 'catName'],
   data() {
     return {
@@ -33,10 +45,10 @@ export default {
   computed: {},
   mounted() {},
   methods: {
+    ...mapMutations(['showModal']),
     deleteCat() {
-      this.dialog = false
-      this.$store.dispatch('cats/deleteCat', this.catId)
-      this.dialog = false
+      // this.$store.dispatch('cats/deleteCat', this.catId)
+      // this.dialog = false
     }
   }
 }

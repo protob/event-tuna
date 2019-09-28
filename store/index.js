@@ -1,11 +1,16 @@
 // apiKey: process.env.SONGKICK_API_KEY
 export const state = () => ({
-  test: 1
+  modalVisible: false,
+  modalComponent: null
 })
 
 export const mutations = {
-  increment(state) {
-    state.counter++
+  showModal(state, componentName) {
+    state.modalVisible = true
+    state.modalComponent = componentName
+  },
+  hideModal(state) {
+    state.modalVisible = false
   }
 }
 

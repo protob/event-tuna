@@ -47,6 +47,7 @@
     "eslint-plugin-prettier": "^3.0.1",
     "firebase": "^6.6.2",
     "flag-icon-css": "^3.4.0",
+    "formvuelatte": "^0.2.3",
     "husky": "^2.6.0",
     "jest": "^24.1.0",
     "lint-staged": "^8.2.1",
