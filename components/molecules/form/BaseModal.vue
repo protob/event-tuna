@@ -55,7 +55,6 @@ export default {
   watch: {
     visible(isVisble) {
       this.dialog = isVisble
-      // this.dialog
     },
     modalComponent(formName) {
       if (!formName) return

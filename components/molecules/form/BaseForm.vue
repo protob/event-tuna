@@ -1,63 +1,98 @@
 <template>
   <div>
-    <form @submit.prevent="onSave">
-      <v-card>
-        <v-card-title>
-          <span class="headline text-capitalize">{{ formatedName }}</span>
-        </v-card-title>
-        <v-card-text>
-          <v-container>
-            <SchemaForm v-model="userData" :schema="schema" />
-          </v-container>
-        </v-card-text>
-        <v-card-actions>
-          <v-spacer></v-spacer>
-          <v-btn color="blue darken-1" text type="submit">Save</v-btn>
-          <v-btn color="blue darken-1" text @click="hideModal">Close</v-btn>
-        </v-card-actions>
-      </v-card>
-    </form>
+    <v-card>
+      <v-toolbar dark color="primary">
+        <v-toolbar-title class="headline text-capitalize">
+          {{ formatedName }}
+        </v-toolbar-title>
+        <v-spacer></v-spacer>
+        <div class="text-center push-top">
+          <v-btn color="white darken-1" text @click="hideModal">Close</v-btn>
+        </div>
+      </v-toolbar>
+      <ValidationObserver ref="obs">
+        <SchemaForm v-model="userData" :schema="schema">
+          <!-- login/register -->
+          <v-card-actions v-if="isLogin">
+            <v-container>
+              <v-layout justify-center class="pb-4">
+                <v-btn @click="clear">Clear</v-btn>
+                <v-btn @click="submit" class="blue">Submit</v-btn>
+              </v-layout>
+
+              <v-layout justify-center>
+                <v-flex xs12 class="btns-wrap">
+                  <div class="text-center push-top">
+                    <button @click="resetPassword" class="btn-red btn-xsmall">
+                      <i class="fa fa-google fa-btn"></i>Reset password
+                    </button>
+                  </div>
+                  <div class="text-center push-top">
+                    <button class="btn-red btn-xsmall" @click="loginWithGoogle">
+                      <i class="fa fa-google fa-btn"></i>Login with Google
+                    </button>
+                  </div>
+                </v-flex>
+              </v-layout>
+            </v-container>
+          </v-card-actions>
+          <!-- add item -->
+          <v-card-actions v-else>
+            <v-spacer></v-spacer>
+            <v-btn color="blue darken-1" text type="submit">Save</v-btn>
+            <v-btn color="blue darken-1" text @click="hideModal">Close</v-btn>
+          </v-card-actions>
+        </SchemaForm>
+      </ValidationObserver>
+    </v-card>
   </div>
 </template>
 
 <script>
-import { SchemaForm } from 'formvuelatte'
+import { ValidationObserver } from 'vee-validate'
+import SchemaForm from './SchemaForm'
 import FormText from './FormTextField'
 
 const ADD_ITEM_SCHEMA = {
   name: {
     component: FormText,
-    label: 'ITEM'
+    label: 'Item'
   }
 }
 const LOGIN_SCHEMA = {
   email: {
     component: FormText,
-    label: 'Email'
+    required: true,
+    label: 'Email',
+    rules: 'required|email'
   },
   password: {
     component: FormText,
-    label: 'Password'
+    label: 'Password',
+    rules: 'required'
   }
 }
 
 const REGISTER_SCHEMA = {
   name: {
     component: FormText,
-    label: 'Name'
+    label: 'Name',
+    rules: 'required|max:20|asyncRuleUserExist'
   },
   email: {
     component: FormText,
-    label: 'Email'
+    label: 'Email',
+    rules: 'required|email|asyncRuleEmailNotExist'
   },
   password: {
     component: FormText,
-    label: 'Password'
+    label: 'Password',
+    rules: 'required'
   }
 }
 
 export default {
-  components: { SchemaForm },
+  components: { SchemaForm, ValidationObserver },
   props: ['formName'],
   data() {
     return {
@@ -65,6 +100,12 @@ export default {
     }
   },
   computed: {
+    isLogin() {
+      return (
+        this.formName.toLowerCase().includes('login') ||
+        this.formName.toLowerCase().includes('register')
+      )
+    },
     formatedName() {
       return this.formName.split('_').join(' ')
     },
@@ -75,16 +116,22 @@ export default {
           : this.formName.toLowerCase() == 'register'
           ? REGISTER_SCHEMA
           : ADD_ITEM_SCHEMA
-      console.log(schema)
+
       return schema
     }
   },
+
   methods: {
+    submit() {
+      const data = this.userData
+      console.log(data)
+    },
+    clear() {},
+    resetPassword() {},
+    loginWithGoogle() {},
     hideModal() {
       this.$emit('hideModal')
     }
   }
 }
 </script>
-
-<style></style>

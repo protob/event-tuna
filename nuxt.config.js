@@ -79,6 +79,8 @@ module.exports = {
     // '~plugins/date-filter.js',
     // '~/plugins/vuefire.js',
     // '~/plugins/vee-validate.js', //v3 has duffernt
+    // '~/plugins/helpers.js',
+    '~/plugins/vue-inject.js',
     '~/plugins/firebase.js',
     '~/plugins/vue-bar.js',
     '~/plugins/vue2-filters.js'

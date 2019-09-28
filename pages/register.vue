@@ -1,19 +1,16 @@
 <template>
   <div>
     <v-container class="form-wrap">
-      <base-form @hideModal="hideModal" :form-name="'Register'" />
+      <base-form :form-name="'Register'" />
     </v-container>
   </div>
 </template>
 
 <script>
-import { mapMutations } from 'vuex'
 import BaseForm from '~/components/molecules/form/BaseForm'
 export default {
   components: { BaseForm },
-  methods: {
-    ...mapMutations(['hideModal'])
-  }
+  methods: {}
 }
 </script>
 
