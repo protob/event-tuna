@@ -122,13 +122,41 @@ export default {
   },
 
   methods: {
-    submit() {
-      const data = this.userData
-      console.log(data)
+    clear() {
+      this.userData = {}
+      this.$nextTick(() => {
+        this.$refs.obs.reset()
+      })
     },
-    clear() {},
     resetPassword() {},
-    loginWithGoogle() {},
+
+    async submit() {
+      const result = await this.$refs.obs.validate()
+      if (result) {
+        this.loginWithEmail()
+      }
+    },
+    loginWithEmail() {
+      this.$store
+        .dispatch('auth/loginWithEmailAndPassword', {
+          email: this.userData.email,
+          password: this.userData.password
+        })
+        .then(() => this.successRedirect())
+        .catch((error) => alert(error.message))
+    },
+    loginWithGoogle() {
+      this.$store
+        .dispatch('auth/loginWithGoogle')
+        .then(() => this.successRedirect())
+        .catch((error) => alert(error.message))
+    },
+
+    successRedirect() {
+      const redirectTo = this.$route.query.redirectTo || { path: '/' }
+      this.$router.push(redirectTo)
+    },
+
     hideModal() {
       this.$emit('hideModal')
     }

@@ -1,6 +1,11 @@
-import mock from '../apiMock.js'
-const o = mock().mock.users
-
 export default () => ({
-  ...o
+  currentUser: {
+    userName: '',
+    email: '',
+    password: '',
+    id: ''
+  },
+  isAdmin: true,
+  isAuthorized: true,
+  list: []
 })

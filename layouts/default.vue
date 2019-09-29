@@ -111,6 +111,8 @@
               ></font-awesome-icon>
               <span class="hidden-md-and-down">REGISTER</span>
             </v-btn>
+
+            <user-widget v-if="user" :user="user" />
           </v-col>
         </v-row>
       </v-container>
@@ -132,13 +134,16 @@
 </template>
 
 <script>
-import { mapMutations } from 'vuex'
+import { mapMutations, mapGetters } from 'vuex'
 import GeoTimeToolbar from '~/components/molecules/toolbar/GeoTimeToolbar'
 import BaseModal from '~/components/molecules/form/BaseModal'
+import userWidget from '~/components/molecules/user/userWidget'
+
 export default {
   components: {
     GeoTimeToolbar,
-    BaseModal
+    BaseModal,
+    userWidget
   },
   data() {
     return {
@@ -162,6 +167,11 @@ export default {
       rightDrawer: false,
       title: 'Vuetify.js'
     }
+  },
+  computed: {
+    ...mapGetters({
+      user: 'auth/getAuthUser'
+    })
   },
   methods: {
     ...mapMutations(['showModal'])

@@ -1,6 +1,13 @@
-import mock from '../apiMock.js'
-const o = mock().mock.auth
-
 export default () => ({
-  ...o
+  currentUser: {
+    name: '',
+    email: '',
+    password: '',
+    id: ''
+  },
+  isAdmin: true,
+  isAuthorized: true,
+  authId: null,
+  unsubscribeAuthObserver: null,
+  list: []
 })
