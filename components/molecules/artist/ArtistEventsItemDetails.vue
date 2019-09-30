@@ -64,13 +64,7 @@ export default {
     detailsVisible: {
       type: Boolean
     }
-  },
-  data() {
-    return {}
-  },
-  computed: {},
-  mounted() {},
-  methods: {}
+  }
 }
 </script>
 

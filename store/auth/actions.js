@@ -63,8 +63,11 @@ export default {
       .then(() => dispatch('fetchAuthUser'))
   },
 
-  loginWithEmailAndPassword(context, { email, password }) {
-    return firebase.auth().signInWithEmailAndPassword(email, password)
+  loginWithEmailAndPassword({ dispatch }, { email, password }) {
+    return firebase
+      .auth()
+      .signInWithEmailAndPassword(email, password)
+      .then(() => dispatch('fetchAuthUser'))
   },
   // SIGN IN WITH GOOGLE
   signInWithGoogle({ dispatch }) {
@@ -169,16 +172,12 @@ export default {
                 maxAge: 60 * 60 * 24 * 7
               })
 
-              // Cookie.set('authId', userId)
-              // Cookie.set(
-              //   'expirationDate',
-              //   new Date().getTime() + 1000 * 60 * 60 * 24 // one day
-              // )
               resolve(user)
             })
 
             // ref.onSnapshot(doc => {})
           } else {
+            console.error('error')
             resolve(null)
           }
         })

@@ -1,11 +1,8 @@
 import firebase from 'firebase/app'
-import {
-  fireDb
-} from '~/plugins/firebase.js'
+import { fireDb } from '~/plugins/firebase.js'
 
 export default {
   async fetchUser(vuexContext, { id }) {
-    console.log('id', id)
     const ref = fireDb.collection('users').doc(id)
 
     await ref.get().then((docSnapshot) => {
@@ -15,14 +12,12 @@ export default {
           vuexContext.commit('SET_CURRENT_USER', data)
         })
       } else {
-        console.log('user doas not exists')
+        console.error('user does not exist')
       }
     })
   },
 
   createUser(vuexContext, form) {
-    console.log(form)
-
     const ref = fireDb.collection('users').doc(form.uid)
 
     ref.get().then((docSnapshot) => {

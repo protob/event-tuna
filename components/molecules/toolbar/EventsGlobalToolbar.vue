@@ -2,19 +2,6 @@
   <section class="has-helper toolbar-events-main" :data-name="$options.name">
     <v-container class="toolbar">
       <v-row no-gutters>
-        <!-- <v-col md4>
-          <v-btn-toggle mandatory>
-            <v-btn @click="changeListingLayout(0)">
-              <font-awesome-icon :icon="['fas', 'bars']"></font-awesome-icon>
-            </v-btn>
-            <v-btn @click="changeListingLayout(1)">
-              <font-awesome-icon
-                :icon="['fas', 'th-large']"
-              ></font-awesome-icon>
-            </v-btn>
-          </v-btn-toggle>
-        </v-col>-->
-
         <v-col md4>
           <v-select
             v-model="sorting"

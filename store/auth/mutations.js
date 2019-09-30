@@ -9,7 +9,6 @@ export default {
   },
 
   SET_AUTH_ID(state, payload) {
-    console.log('authiddd', payload)
     state.authId = payload.userId
   },
   setUnsubscribeAuthObserver(state, unsubscribe) {

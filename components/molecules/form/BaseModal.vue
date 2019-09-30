@@ -15,42 +15,52 @@
           </v-btn>
         </template>
 
-        <base-confirm
+        <!-- <div v-if="dialog"> -->
+        <confirm-box
           v-if="isConfirm"
           :form-name="formName"
           @hideModal="hideModal"
         />
-        <base-form v-else @hideModal="hideModal" :formName="formName" />
+        <login-form
+          v-else-if="isLogin"
+          :form-name="formName"
+          @hideModal="hideModal"
+        />
+        <item-form v-else :form-name="formName" @hideModal="hideModal" />
+        <!-- </div> -->
       </v-dialog>
     </v-row>
   </div>
 </template>
 <script>
 import { mapState, mapMutations } from 'vuex'
-import BaseConfirm from '~/components/molecules/form/BaseConfirm'
-import BaseForm from '~/components/molecules/form/BaseForm'
+import ConfirmBox from '~/components/molecules/form/ConfirmBox'
+import LoginForm from '~/components/molecules/form/LoginForm'
+import ItemForm from '~/components/molecules/form/ItemForm'
 export default {
   name: 'AppModal',
   components: {
-    BaseForm,
-    BaseConfirm
+    LoginForm,
+    ItemForm,
+    ConfirmBox
   },
 
   data() {
     return {
-      formName: null,
+      formName: '',
       dialog: false
     }
   },
   computed: {
+    isLogin() {
+      return this.formName.toLowerCase().includes('login')
+    },
+
     ...mapState({
       visible: 'modalVisible',
       isConfirm: 'isConfirm',
       modalComponent: 'modalComponent'
     })
-  },
-  methods: {
-    ...mapMutations(['hideModal'])
   },
   watch: {
     visible(isVisble) {
@@ -60,6 +70,9 @@ export default {
       if (!formName) return
       this.formName = formName
     }
+  },
+  methods: {
+    ...mapMutations(['hideModal'])
   }
 }
 </script>

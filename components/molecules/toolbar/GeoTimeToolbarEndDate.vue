@@ -44,8 +44,6 @@ export default {
       dialog: false
     }
   },
-  computed: {},
-  mounted() {},
   methods: {
     onSave() {
       this.$store.dispatch('events/updateEndDate', this.endDate)
@@ -56,8 +54,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.geo-time-fitler-end-date {
-}
 .v-picker {
   box-shadow: none;
   -webkit-box-shadow: none;

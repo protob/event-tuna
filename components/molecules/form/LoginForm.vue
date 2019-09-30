@@ -2,9 +2,9 @@
   <div>
     <v-card>
       <v-toolbar dark color="primary">
-        <v-toolbar-title class="headline text-capitalize">
-          {{ formatedName }}
-        </v-toolbar-title>
+        <v-toolbar-title class="headline text-capitalize">{{
+          formatedName
+        }}</v-toolbar-title>
         <v-spacer></v-spacer>
         <div class="text-center push-top">
           <v-btn color="white darken-1" text @click="hideModal">Close</v-btn>
@@ -17,13 +17,13 @@
             <v-container>
               <v-layout justify-center class="pb-4">
                 <v-btn @click="clear">Clear</v-btn>
-                <v-btn @click="submit" class="blue">Submit</v-btn>
+                <v-btn class="blue" @click="submit">Submit</v-btn>
               </v-layout>
 
               <v-layout justify-center>
                 <v-flex xs12 class="btns-wrap">
                   <div class="text-center push-top">
-                    <button @click="resetPassword" class="btn-red btn-xsmall">
+                    <button class="btn-red btn-xsmall" @click="resetPassword">
                       <i class="fa fa-google fa-btn"></i>Reset password
                     </button>
                   </div>
@@ -36,12 +36,6 @@
               </v-layout>
             </v-container>
           </v-card-actions>
-          <!-- add item -->
-          <v-card-actions v-else>
-            <v-spacer></v-spacer>
-            <v-btn color="blue darken-1" text type="submit">Save</v-btn>
-            <v-btn color="blue darken-1" text @click="hideModal">Close</v-btn>
-          </v-card-actions>
         </SchemaForm>
       </ValidationObserver>
     </v-card>
@@ -53,12 +47,6 @@ import { ValidationObserver } from 'vee-validate'
 import SchemaForm from './SchemaForm'
 import FormText from './FormTextField'
 
-const ADD_ITEM_SCHEMA = {
-  name: {
-    component: FormText,
-    label: 'Item'
-  }
-}
 const LOGIN_SCHEMA = {
   email: {
     component: FormText,
@@ -100,34 +88,31 @@ export default {
     }
   },
   computed: {
-    isLogin() {
-      return (
-        this.formName.toLowerCase().includes('login') ||
-        this.formName.toLowerCase().includes('register')
-      )
-    },
     formatedName() {
       return this.formName.split('_').join(' ')
     },
     schema() {
       const schema =
-        this.formName.toLowerCase() == 'login'
-          ? LOGIN_SCHEMA
-          : this.formName.toLowerCase() == 'register'
-          ? REGISTER_SCHEMA
-          : ADD_ITEM_SCHEMA
+        this.formName.toLowerCase() === 'login' ? LOGIN_SCHEMA : REGISTER_SCHEMA
 
       return schema
     }
   },
 
   methods: {
+    // general methods
+    hideModal() {
+      this.$emit('hideModal')
+    },
+
+    // login methods
     clear() {
       this.userData = {}
       this.$nextTick(() => {
         this.$refs.obs.reset()
       })
     },
+
     resetPassword() {},
 
     async submit() {
@@ -142,7 +127,10 @@ export default {
           email: this.userData.email,
           password: this.userData.password
         })
-        .then(() => this.successRedirect())
+        .then(() => {
+          this.successRedirect()
+          this.hideModal()
+        })
         .catch((error) => alert(error.message))
     },
     loginWithGoogle() {
@@ -155,10 +143,6 @@ export default {
     successRedirect() {
       const redirectTo = this.$route.query.redirectTo || { path: '/' }
       this.$router.push(redirectTo)
-    },
-
-    hideModal() {
-      this.$emit('hideModal')
     }
   }
 }

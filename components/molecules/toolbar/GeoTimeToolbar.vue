@@ -63,7 +63,7 @@ export default {
   computed: {
     ...mapGetters('events', ['getStartDate', 'getEndDate'])
   },
-  mounted() {},
+
   methods: {
     ...mapActions('events', ['updateStartDate', 'updateEndDate']),
     filterEventsByTimeRange() {
@@ -71,8 +71,6 @@ export default {
         startDate: this.getStartDate,
         endDate: this.getEndDate
       }
-
-      console.log(range)
       this.$store.dispatch('events/filterEventsByTimeRange', range)
     }
   }
@@ -82,8 +80,5 @@ export default {
 <style lang="scss" scoped>
 .row {
   height: 100%;
-}
-.geo-time-filter {
-  // max-width: 500px;
 }
 </style>

@@ -1,15 +1,15 @@
 <template>
   <div>
     <v-container class="form-wrap">
-      <base-form :form-name="'Login'" />
+      <login-form :form-name="'Login'" />
     </v-container>
   </div>
 </template>
 
 <script>
-import BaseForm from '~/components/molecules/form/BaseForm'
+import LoginForm from '~/components/molecules/form/LoginForm'
 export default {
-  components: { BaseForm },
+  components: { LoginForm },
   methods: {}
 }
 </script>

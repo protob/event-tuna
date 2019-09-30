@@ -5,7 +5,6 @@
         <template v-slot:activator="{ on }">
           <v-btn color="primary" dark v-on="on">{{ user.userName }}</v-btn>
         </template>
-
         <v-list>
           <v-list-item>
             <a @click.prevent="$store.dispatch('auth/logOut')">Log Out</a>
@@ -23,10 +22,7 @@ export default {
   props: ['user'],
   data() {
     return {}
-  },
-  computed: {},
-  mounted() {},
-  methods: {}
+  }
 }
 </script>
 

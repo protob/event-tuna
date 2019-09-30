@@ -27,7 +27,7 @@ export default {
     artistsByCatsListing
   },
   mounted() {
-    this.addHelpers()
+    //  this.addHelpers()
   },
   methods: {
     addHelpers() {

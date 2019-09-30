@@ -51,7 +51,7 @@ export default {
     artistEventItem
   },
   mixins: [Vue2Filters.mixin],
-  props: [],
+
   data() {
     return {
       detailsVisible: false,
@@ -82,7 +82,6 @@ export default {
   mounted() {
     this.readFromFirestore()
     this.$root.$on('updateArtistEvents', (data) => {
-      console.log(this.$store.state.events.currentCountryCode)
       this.$forceUpdate()
     })
   },
@@ -110,7 +109,7 @@ export default {
 
     toggleDetails() {
       this.detailsVisible = !this.detailsVisible
-      // some code to filter users
+      // TODO filter users
     }
   }
 }

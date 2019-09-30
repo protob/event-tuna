@@ -1,19 +1,16 @@
-import { mock } from '../apiMock.js'
-
 export default {
   getCurrentEvents(state, rootGetters, rootState) {
-    return state.currentEvents
-    // const eventsArr = state.currentEvents
-    // const userId = rootState.auth.authId
-    // const filteredArr = []
-    // // foreach nad map methods  dont work
-    // for (let i = 0; i < eventsArr.length; i++) {
-    //   if (eventsArr[i].userId === userId) {
-    //     filteredArr.push(eventsArr[i])
-    //   }
-    // }
+    const eventsArr = state.currentEvents
+    const userId = rootState.auth.authId
+    const filteredArr = []
 
-    // return filteredArr
+    for (let i = 0; i < eventsArr.length; i++) {
+      if (eventsArr[i].userId === userId) {
+        filteredArr.push(eventsArr[i])
+      }
+    }
+
+    return filteredArr
   },
 
   getCatIsDetailVisible(state) {

@@ -68,9 +68,7 @@ export default {
       rules: ''
     }
   },
-  computed: {
-    // rules() {}
-  },
+
   mounted() {
     this.label = this.$attrs.label
     this.rules = this.$attrs.rules

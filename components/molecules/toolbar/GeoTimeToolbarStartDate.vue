@@ -45,12 +45,10 @@ export default {
       dialog: false
     }
   },
-  computed: {},
-  mounted() {},
+
   methods: {
     onSave() {
       this.$store.dispatch('events/updateStartDate', this.startDate)
-
       this.dialog = false
     }
   }
@@ -58,9 +56,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.geo-time-fitler-start-date {
-}
-
 .v-picker {
   box-shadow: none;
   -webkit-box-shadow: none;

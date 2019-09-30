@@ -38,14 +38,11 @@ export default {
       sorting: 'asc'
     }
   },
-  computed: {},
-  mounted() {},
+
   methods: {
     ...mapMutations(['showModal']),
-
     sortItems() {
-      // console.log(this.sorting)
-      // this.$store.dispatch('cats/sortCats', this.sorting)
+      this.$store.dispatch('cats/sortCats', this.sorting)
     }
   }
 }

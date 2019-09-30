@@ -1,5 +1,5 @@
 export default {
-  todos(state) {
-    return state.list
+  getCurrentUser(state) {
+    return state.currentUser
   }
 }

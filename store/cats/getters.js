@@ -30,7 +30,6 @@ export default {
     const catsArr = state.items
     const userId = rootState.auth.authId
     const filteredArr = []
-    // foreach nad map methods  dont work
     for (let i = 0; i < catsArr.length; i++) {
       if (catsArr[i].userId === userId) {
         filteredArr.push(catsArr[i])

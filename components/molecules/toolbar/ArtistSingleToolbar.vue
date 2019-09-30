@@ -18,7 +18,14 @@
         color="primary"
         class="mx-1"
         dark
-        @click="showModal('confirm_delete_artist')"
+        @click="
+          showModal({
+            name: 'confirm_delete_artist',
+            id: artistId,
+            artistCatId: catId,
+            isArtist: true
+          })
+        "
       >
         <font-awesome-icon :icon="['fas', 'times']"></font-awesome-icon>
       </v-btn>
@@ -61,7 +68,7 @@ export default {
 
       await this.$store.dispatch('cats/fetchArtistEvetns', obj)
       this.$forceUpdate()
-      this.$root.$emit('updateArtistStats') // update sibling
+      this.$root.$emit('updateArtistStats')
     }
   }
 }

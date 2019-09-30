@@ -30,39 +30,98 @@
 <script>
 import Vue2Filters from 'vue2-filters'
 import { mapGetters } from 'vuex'
-
+import { fireDb } from '~/plugins/firebase.js'
 import CatsGlobalToolbar from '~/components/molecules/toolbar/CatsGlobalToolbar'
 import artistCatItem from '~/components/molecules/artist/ArtistCatItem'
 
 export default {
-  name: 'AllArtistsCatsListing',
+  name: 'ArtistByCatsListing',
   components: {
     CatsGlobalToolbar,
     artistCatItem
   },
   mixins: [Vue2Filters.mixin],
-  props: [],
+
   data() {
     return {
-      writeSuccessful: false,
-      readSuccessful: false,
-      text: ''
+      writeSuccess: false,
+      readSuccess: false
     }
   },
   computed: {
-    ...mapGetters(['getState']),
-
     ...mapGetters('cats', {
       order: 'getOrder',
-
       cats: 'getCats'
     }),
-    ...mapGetters({
-      user: 'auth/getAuthUser'
+    ...mapGetters('auth', {
+      user: 'getAuthUser'
     })
   },
-  mounted() {},
-  methods: {}
+  mounted() {
+    this.readCatsFromFirestore()
+    this.readStatsFromFirestore()
+    this.getIdNameMap()
+  },
+  methods: {
+    async readCatsFromFirestore() {
+      const refs = fireDb.collection('cats')
+      const userId = this.$cookies.get('authId') + ''
+      const filteredArr = []
+      try {
+        await refs
+          .where('userId', '==', userId)
+          .get()
+          .then(function(querySnapshot) {
+            querySnapshot.forEach(function(doc) {
+              filteredArr.push({ ...doc.data() })
+            })
+          })
+      } catch (e) {
+        // TODO: error handling
+        console.error(e)
+      }
+      this.$store.dispatch('cats/populateCats', filteredArr)
+      this.readSuccess = true
+    },
+
+    async readStatsFromFirestore() {
+      const refs = fireDb.collection('catsStats')
+      const userId = this.$cookies.get('authId') + ''
+      const catsStatsObj = {}
+      try {
+        await refs
+          .where('userId', '==', userId)
+          .get()
+          .then(function(querySnapshot) {
+            querySnapshot.forEach(function(doc) {
+              catsStatsObj[doc.id] = doc.data()
+            })
+          })
+      } catch (e) {
+        // TODO: error handling
+        console.error(e)
+      }
+      this.$store.dispatch('cats/populateCatsSats', catsStatsObj)
+    },
+
+    async getIdNameMap() {
+      const ref = fireDb.collection('artists')
+      let snap
+      try {
+        snap = await ref.get()
+      } catch (e) {
+        // TODO: error handling
+        console.error(e)
+      }
+
+      const map = {}
+      const catsObj = snap.docs.map((doc) => {
+        const item = doc.data()
+        map[item.id] = item.displayName
+      })
+      this.$store.dispatch('cats/populateIdNameMap', map)
+    }
+  }
 }
 </script>
 

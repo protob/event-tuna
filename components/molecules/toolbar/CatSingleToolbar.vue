@@ -1,36 +1,44 @@
 <template>
-  <section class="has-helpers toolbar-cat-single" :data-name="$options.name">
+  <section class="has-helper toolbar-cat-single" :data-name="$options.name">
     <v-container my-0 py-0>
       <v-row>
         <v-col :cols="12" :md="6" class="d-flex justify-start my-0 py-0">
+          <!--add artist-->
           <v-btn
             color="primary"
             class="mx-1"
             dark
-            @click="showModal('add_artist')"
+            @click="
+              showModal({
+                name: 'add_artist',
+                artistCatId: catId,
+                isArtist: true
+              })
+            "
           >
             <font-awesome-icon :icon="['fas', 'plus']"></font-awesome-icon>
           </v-btn>
         </v-col>
-        <!--add cat form-->
+
         <v-col cols="12" :md="6" class="d-flex justify-end my-0 py-0">
+          <!--edit cat-->
           <v-btn
             color="primary"
             class="mx-1"
             dark
-            @click="showModal('edit_category')"
+            @click="showModal({ name: 'edit_category', id: catId })"
           >
             <font-awesome-icon :icon="['fas', 'edit']"></font-awesome-icon>
           </v-btn>
+          <!--delete cat-->
           <v-btn
             color="primary"
             class="mx-1"
             dark
-            @click="showModal('confirm_delete_category')"
+            @click="showModal({ name: 'confirm_delete_category', id: catId })"
           >
             <font-awesome-icon :icon="['fas', 'times']"></font-awesome-icon>
           </v-btn>
-          <!-- <dialog-modal :text="'x'" /> -->
         </v-col>
       </v-row>
     </v-container>
@@ -49,14 +57,8 @@ export default {
       dialog: false
     }
   },
-  computed: {},
-  mounted() {},
   methods: {
-    ...mapMutations(['showModal']),
-    deleteCat() {
-      // this.$store.dispatch('cats/deleteCat', this.catId)
-      // this.dialog = false
-    }
+    ...mapMutations(['showModal'])
   }
 }
 </script>

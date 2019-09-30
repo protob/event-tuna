@@ -22,9 +22,9 @@
                     <span>{{ k }} events</span>
                   </v-card>
                   <v-card class="ma-1 pa-2 elevation-0">
-                    <span>
-                      {{ Object.values(v).reduce((a, b) => a + b, 0) }}
-                    </span>
+                    <span>{{
+                      Object.values(v).reduce((a, b) => a + b, 0)
+                    }}</span>
                   </v-card>
                 </v-row>
               </v-container>
@@ -38,9 +38,9 @@
               pb-0="pb-0"
             >
               <v-row :align="'start'" :justify="'start'">
-                <v-card class="ma-1 py-2 px-4 blue-grey darken-4">
-                  {{ kk }}
-                </v-card>
+                <v-card class="ma-1 py-2 px-4 blue-grey darken-4">{{
+                  kk
+                }}</v-card>
                 <v-card class="ma-1 pa-2 elevation-0">
                   <a href @click.prevent="filterEventsByCountry(kk)">
                     <span class="flag-icon" :class="['flag-icon-' + kk]"></span>
@@ -90,9 +90,9 @@ export default {
       this.$store.dispatch('events/filterEventsByCountry', isoCode)
       this.$store.dispatch('events/setCurrentCountryCode', isoCode)
 
-      // dirty fix beacuse ui is not upading at first
+      // dirty fix beacuse to force ui update
       setTimeout(() => {
-        this.$root.$emit('updateArtistEvents') // update sibling
+        this.$root.$emit('updateArtistEvents')
       }, 200)
     },
 
@@ -101,9 +101,9 @@ export default {
       this.$store.dispatch('artists/getArtistEvents', artistObj)
       this.$store.dispatch('artists/setCurrentArtist', artistObj)
       this.$store.dispatch('events/setCurrentCountryCode', '')
-      // dirty fix beacuse ui is not upading at first
+      // dirty fix beacuse to force ui update
       setTimeout(() => {
-        this.$root.$emit('updateArtistEvents') // update sibling
+        this.$root.$emit('updateArtistEvents')
       }, 200)
     },
     getTotal() {

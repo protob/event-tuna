@@ -75,17 +75,10 @@ export default {
 
       let total = 0
       Object.keys(cat.artistEvents).forEach((k) => {
-        const item = cat.artistEvents[k]
-
+        // const item = cat.artistEvents[k]
         total++
       })
       return total
-    },
-    formatName(name) {
-      return name
-        .split('+')
-        .join(' ')
-        .toUpperCase()
     }
   }
 }
