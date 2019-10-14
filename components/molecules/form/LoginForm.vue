@@ -7,7 +7,13 @@
         </v-toolbar-title>
         <v-spacer></v-spacer>
         <div class="text-center push-top">
-          <v-btn color="white darken-1" text @click="hideModal">Close</v-btn>
+          <v-btn
+            v-if="!hideCloseBtn"
+            color="white darken-1"
+            text
+            @click="hideModal"
+            >Close</v-btn
+          >
         </div>
       </v-toolbar>
       <ValidationObserver ref="obs">
@@ -81,7 +87,7 @@ const REGISTER_SCHEMA = {
 
 export default {
   components: { SchemaForm, ValidationObserver },
-  props: ['formName'],
+  props: ['formName', 'hideCloseBtn'],
   data() {
     return {
       userData: {}
@@ -127,7 +133,7 @@ export default {
           email: this.userData.email,
           password: this.userData.password
         })
-        .then(() => {
+        .then((data) => {
           this.successRedirect()
           this.hideModal()
         })

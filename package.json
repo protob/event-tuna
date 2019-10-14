@@ -23,6 +23,7 @@
   "dependencies": {
     "@nuxtjs/axios": "^5.3.6",
     "@nuxtjs/pwa": "^3.0.0-0",
+    "@saeris/vue-spinners": "^1.0.8",
     "cross-env": "^5.2.0",
     "express": "^4.16.4",
     "glob-all": "^3.1.0",

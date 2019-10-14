@@ -4,7 +4,7 @@
     <slot name="beforeForm"></slot>
     <form class="schema-form">
       <v-card-text>
-        <v-container>
+        <v-container class="pb-0">
           <component
             :is="field.component"
             v-for="field in parsedSchema"

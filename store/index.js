@@ -5,10 +5,15 @@ export const state = () => ({
   isConfirm: false,
   isArtist: false,
   editedItemId: null,
-  artistCatId: null
+  artistCatId: null,
+  isLoading: false
 })
 
 export const mutations = {
+  SET_LOADING_STATE(state, payload) {
+    state.isLoading = payload.isLoading
+  },
+
   showModal(state, payload) {
     state.modalVisible = true
     state.modalComponent = payload.name ? payload.name : payload // componentname
@@ -38,5 +43,8 @@ export const getters = {
   },
   getState(state) {
     return state
+  },
+  getIsLoading(state) {
+    return state.isLoading
   }
 }
