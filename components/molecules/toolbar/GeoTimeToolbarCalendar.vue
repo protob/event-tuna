@@ -1,12 +1,6 @@
 <template>
   <div>
-    <v-btn color="primary" dark @click.stop="dialog = true">
-      <font-awesome-icon
-        class="white--text"
-        :icon="['fas', 'calendar-alt']"
-      ></font-awesome-icon>
-    </v-btn>
-
+    <btn :icon="'calendar'" :cssClass="'mx-0'" @click.stop="dialog = true" />
     <v-dialog v-model="dialog" persistent max-width="320px">
       <form @submit.prevent="onSave">
         <v-card :elevation="0">
@@ -16,17 +10,15 @@
           <v-card-text>
             <v-container>
               <v-row>
-                <v-date-picker v-model="startDate"></v-date-picker>
+                <v-date-picker v-model="selectedDate"></v-date-picker>
               </v-row>
             </v-container>
           </v-card-text>
           <v-card-actions class="grey darken-4">
             <v-spacer></v-spacer>
 
-            <v-btn color="blue darken-1" text type="submit">Save</v-btn>
-            <v-btn color="blue darken-1" text @click="dialog = false"
-              >Close</v-btn
-            >
+            <btn text type="submit">Save</btn>
+            <btn text @click="dialog = false">Close</btn>
           </v-card-actions>
         </v-card>
       </form>
@@ -35,20 +27,26 @@
 </template>
 
 <script>
+import btn from '~/components/atoms/BaseBtn'
 export default {
   name: 'GeoTimeFitlerStartDate',
-  components: {},
-  props: [],
+  components: { btn },
+  props: ['purpose'],
   data() {
     return {
-      startDate: '',
+      selectedDate: '',
       dialog: false
     }
   },
 
   methods: {
     onSave() {
-      this.$store.dispatch('events/updateStartDate', this.startDate)
+      if (this.purpose === 'start') {
+        this.$store.dispatch('events/updateStartDate', this.selectedDate)
+      } else {
+        this.$store.dispatch('events/updateEndDate', this.selectedDate)
+      }
+
       this.dialog = false
     }
   }

@@ -6,12 +6,8 @@
     <div class="category-stats">
       <v-container fluid py-0>
         <v-row class="wrap align-center">
-          <v-btn
-            depressed="depressed"
-            color="primary"
-            class="mr-2"
-            @click="toggleCatDetails"
-            >details</v-btn
+          <btn depressed :css-class="'mr-2'" @click="toggleCatDetails"
+            >details</btn
           >
 
           <div class="category-stats-artists d-inline-block mx-1">
@@ -43,10 +39,10 @@
 
 <script>
 import { mapGetters } from 'vuex'
-
+import btn from '~/components/atoms/BaseBtn'
 export default {
   name: 'CatsStatsTotals',
-  components: {},
+  components: { btn },
   props: ['catId'],
   data() {
     return {

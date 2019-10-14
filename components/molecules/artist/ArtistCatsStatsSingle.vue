@@ -6,7 +6,7 @@
     <v-card class="item ma-1 py-2 px-4">
       <div class="stats-artist-wrap">
         <div class="my-2">
-          <v-btn @click="showArtistEvents">Events Details</v-btn>
+          <btn @click="showArtistEvents">Events Details</btn>
         </div>
         <!--  LISTING  -->
         <section v-if="Object.values(getArtistStats(catId, artistId))[0]">
@@ -22,9 +22,9 @@
                     <span>{{ k }} events</span>
                   </v-card>
                   <v-card class="ma-1 pa-2 elevation-0">
-                    <span>
-                      {{ Object.values(v).reduce((a, b) => a + b, 0) }}
-                    </span>
+                    <span>{{
+                      Object.values(v).reduce((a, b) => a + b, 0)
+                    }}</span>
                   </v-card>
                 </v-row>
               </v-container>
@@ -38,9 +38,9 @@
               pb-0="pb-0"
             >
               <v-row :align="'start'" :justify="'start'">
-                <v-card class="ma-1 py-2 px-4 blue-grey darken-4">
-                  {{ kk }}
-                </v-card>
+                <v-card class="ma-1 py-2 px-4 blue-grey darken-4">{{
+                  kk
+                }}</v-card>
                 <v-card class="ma-1 pa-2 elevation-0">
                   <a href @click.prevent="filterEventsByCountry(kk)">
                     <span class="flag-icon" :class="['flag-icon-' + kk]"></span>
@@ -60,12 +60,12 @@
 
 <script>
 import { mapGetters } from 'vuex'
-
+import btn from '~/components/atoms/BaseBtn'
 const { query } = require('what-country')
 
 export default {
   name: 'ArtistCatStatsSingle',
-  components: {},
+  components: { btn },
   props: ['eventsStats', 'artistId', 'catId'],
   data() {
     return {

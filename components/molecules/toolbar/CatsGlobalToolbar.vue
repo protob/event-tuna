@@ -3,14 +3,7 @@
     <v-container>
       <v-row no-gutters>
         <v-col>
-          <v-btn
-            color="primary"
-            class="mx-1"
-            dark
-            @click="showModal('add_category')"
-          >
-            <font-awesome-icon :icon="['fas', 'plus']"></font-awesome-icon>
-          </v-btn>
+          <btn :icon="'plus'" @click="showModal('add_category')" />
         </v-col>
         <v-col>
           <v-select
@@ -28,9 +21,10 @@
 
 <script>
 import { mapMutations } from 'vuex'
+import btn from '~/components/atoms/BaseBtn'
 export default {
   name: 'CatsGlobalToolbar',
-  components: {},
+  components: { btn },
   props: [],
   data() {
     return {

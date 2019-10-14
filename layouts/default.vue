@@ -10,20 +10,35 @@
     >
       <v-list>
         <v-list-item>
-          <v-btn color="primary" dark @click="triggerForm('login')"
-            >LOGIN</v-btn
+          <btn
+            depressed
+            :icon="'user'"
+            :icon-class="'hidden-lg-and-up'"
+            :content-class="'hidden-md-and-down'"
+            @click="showModal('Login')"
+            >LOGIN</btn
           >
         </v-list-item>
 
         <v-list-item>
-          <v-btn color="primary" @click="triggerForm('register')" dark
-            >REGISTER</v-btn
+          <btn
+            depressed
+            :icon="'user-plus'"
+            :icon-class="'hidden-lg-and-up'"
+            :content-class="'hidden-md-and-down'"
+            @click="showModal('Register')"
+            >REGISTER</btn
           >
         </v-list-item>
 
         <v-list-item>
-          <v-btn color="primary" @click="triggerForm('recovery')" dark
-            >RECOVERY</v-btn
+          <btn
+            depressed
+            :icon="'user-plus'"
+            :icon-class="'hidden-lg-and-up'"
+            :content-class="'hidden-md-and-down'"
+            @click="showModal('Register')"
+            >RECOVERY</btn
           >
         </v-list-item>
       </v-list>
@@ -37,21 +52,21 @@
       <v-container fluid>
         <v-row d-flex justify-space-between class="top-bar-area">
           <v-col cols="12" lg="3" md="3" sm="4" class="hidden-sm-and-down">
-            <v-btn depressed="depressed" class="mx-1" color="primary">
-              <font-awesome-icon
-                :icon="['fas', 'cloud-download-alt']"
-                class="hidden-lg-and-up"
-              ></font-awesome-icon>
-              <span class="hidden-md-and-down">Update</span>
-            </v-btn>
+            <btn
+              depressed
+              :icon="'cloud'"
+              :icon-class="'hidden-lg-and-up'"
+              :content-class="'hidden-md-and-down'"
+              >Update</btn
+            >
 
-            <v-btn color="primary" dark class="mx-1">
-              <font-awesome-icon
-                :icon="['fas', 'clipboard-list']"
-                class="hidden-lg-and-up"
-              ></font-awesome-icon>
-              <span class="hidden-md-and-down">Planner</span>
-            </v-btn>
+            <btn
+              depressed
+              :icon="'cloud'"
+              :icon-class="'hidden-lg-and-up'"
+              :content-class="'hidden-md-and-down'"
+              >Planner</btn
+            >
           </v-col>
           <v-col
             cols="12"
@@ -61,56 +76,40 @@
             class="d-none d-md-flex justify-center hidden-sm-and-down"
           >
             <geo-time-toolbar class="hidden-sm-and-down" />
-            <v-btn color="primary" class="mx-1 hidden-md-and-up" dark>
-              <font-awesome-icon
-                :icon="['fas', 'calendar-alt']"
-              ></font-awesome-icon>
-            </v-btn>
+
+            <btn
+              depressed
+              :css-class="'mx-1 hidden-md-and-up'"
+              :icon="'calendar'"
+            />
           </v-col>
 
           <v-col cols="12" lg="3" md="3" sm="12" class="d-flex justify-end">
             <nuxt-link to="/">
-              <v-btn color="primary" class="mx-1 d-none d-lg-flex" dark>
-                <span class="hidden-sm-and-down">HOME</span>
-              </v-btn>
+              <btn
+                :css-class="'mx-1 d-none d-lg-flex'"
+                :content-class="'hidden-sm-and-down'"
+                >HOME</btn
+              >
             </nuxt-link>
 
-            <v-btn
-              depressed="depressed"
-              class="mx-1"
-              color="primary hidden-md-and-up"
-            >
-              <font-awesome-icon
-                :icon="['fas', 'cloud-download-alt']"
-                class="hidden-lg-and-up"
-              ></font-awesome-icon>
-              <span class="hidden-md-and-down">Update</span>
-            </v-btn>
-
-            <v-btn
-              color="primary"
-              class="mx-1"
-              dark
+            <btn
+              depressed
+              :icon="'user'"
+              :icon-class="'hidden-lg-and-up'"
+              :content-class="'hidden-md-and-down'"
               @click="showModal('Login')"
+              >LOGIN</btn
             >
-              <font-awesome-icon
-                :icon="['fas', 'user']"
-                class="hidden-lg-and-up"
-              ></font-awesome-icon>
-              <span class="hidden-md-and-down">LOGIN</span>
-            </v-btn>
-            <v-btn
-              color="primary"
-              class="mx-1"
-              dark
+
+            <btn
+              depressed
+              :icon="'user-plus'"
+              :icon-class="'hidden-lg-and-up'"
+              :content-class="'hidden-md-and-down'"
               @click="showModal('Register')"
+              >REGISTER</btn
             >
-              <font-awesome-icon
-                :icon="['fas', 'user-plus']"
-                class="hidden-lg-and-up"
-              ></font-awesome-icon>
-              <span class="hidden-md-and-down">REGISTER</span>
-            </v-btn>
 
             <user-widget v-if="user" :user="user" />
           </v-col>
@@ -138,12 +137,13 @@ import { mapMutations, mapGetters } from 'vuex'
 import GeoTimeToolbar from '~/components/molecules/toolbar/GeoTimeToolbar'
 import BaseModal from '~/components/molecules/form/BaseModal'
 import userWidget from '~/components/molecules/user/userWidget'
-
+import btn from '~/components/atoms/BaseBtn'
 export default {
   components: {
     GeoTimeToolbar,
     BaseModal,
-    userWidget
+    userWidget,
+    btn
   },
   data() {
     return {

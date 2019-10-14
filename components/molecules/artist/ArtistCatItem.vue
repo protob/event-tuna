@@ -7,7 +7,7 @@
     <div class="item">
       <v-card class="item ma-1 py-4 px-4 light-blue darken-4">
         <div class="headline text-uppercase mb-2">{{ cat.displayName }}</div>
-        <toolbar-cat-single :catId="cat.id" :catName="cat.displayName" />
+        <toolbar-cat-single :cat-id="cat.id" :cat-name="cat.displayName" />
       </v-card>
 
       <div class="artist-cats-stats">

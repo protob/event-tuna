@@ -2,9 +2,8 @@
   <section class="has-helper toolbar-artist-single" :data-name="$options.name">
     <v-container class="d-flex justify-space-between px-0">
       <div>
-        <v-btn color="primary" dark class="mr-2" @click="fetchEvents"
-          >Update</v-btn
-        >
+        <btn :css-class="'mr-2'" @click="fetchEvents">Update</btn>
+
         <div class="d-inline-block">
           <font-awesome-icon
             class="red--text"
@@ -13,11 +12,8 @@
           {{ totalEvents(catId, artistId) }}
         </div>
       </div>
-
-      <v-btn
-        color="primary"
-        class="mx-1"
-        dark
+      <btn
+        :icon="'x'"
         @click="
           showModal({
             name: 'confirm_delete_artist',
@@ -26,19 +22,17 @@
             isArtist: true
           })
         "
-      >
-        <font-awesome-icon :icon="['fas', 'times']"></font-awesome-icon>
-      </v-btn>
+      />
     </v-container>
   </section>
 </template>
 
 <script>
 import { mapGetters, mapMutations } from 'vuex'
-
+import btn from '~/components/atoms/BaseBtn'
 export default {
   name: 'ArtistSingleToolbar',
-  components: {},
+  components: { btn },
   props: ['artistId', 'artistName', 'catId'],
   data() {
     return {

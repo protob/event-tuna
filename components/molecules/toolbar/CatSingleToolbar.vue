@@ -4,10 +4,8 @@
       <v-row>
         <v-col :cols="12" :md="6" class="d-flex justify-start my-0 py-0">
           <!--add artist-->
-          <v-btn
-            color="primary"
-            class="mx-1"
-            dark
+          <btn
+            :icon="'plus'"
             @click="
               showModal({
                 name: 'add_artist',
@@ -15,30 +13,21 @@
                 isArtist: true
               })
             "
-          >
-            <font-awesome-icon :icon="['fas', 'plus']"></font-awesome-icon>
-          </v-btn>
+          />
         </v-col>
 
         <v-col cols="12" :md="6" class="d-flex justify-end my-0 py-0">
           <!--edit cat-->
-          <v-btn
-            color="primary"
-            class="mx-1"
-            dark
+          <btn
+            :icon="'edit'"
             @click="showModal({ name: 'edit_category', id: catId })"
-          >
-            <font-awesome-icon :icon="['fas', 'edit']"></font-awesome-icon>
-          </v-btn>
+          />
+
           <!--delete cat-->
-          <v-btn
-            color="primary"
-            class="mx-1"
-            dark
+          <btn
+            :icon="'x'"
             @click="showModal({ name: 'confirm_delete_category', id: catId })"
-          >
-            <font-awesome-icon :icon="['fas', 'times']"></font-awesome-icon>
-          </v-btn>
+          />
         </v-col>
       </v-row>
     </v-container>
@@ -47,10 +36,10 @@
 
 <script>
 import { mapMutations } from 'vuex'
-
+import btn from '~/components/atoms/BaseBtn'
 export default {
   name: 'CatSingleToolbar',
-  components: {},
+  components: { btn },
   props: ['totalEvent', 'catId', 'catName'],
   data() {
     return {

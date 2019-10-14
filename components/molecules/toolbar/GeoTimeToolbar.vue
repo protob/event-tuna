@@ -15,7 +15,9 @@
             outlined
             @input="updateStartDate($event.target.value)"
           ></v-text-field>
-          <start-date class="mx-1" />
+
+          <calendar :purpose="'start'" class="mx-1" />
+          <!-- <start-date class="mx-1" /> -->
         </v-container>
       </v-flex>
       <!---col---->
@@ -31,16 +33,14 @@
             outlined
             @input="updateEndDate($event.target.value)"
           ></v-text-field>
-
-          <end-date class="mx-1" />
+          <calendar :purpose="'end'" class="mx-1" />
+          <!-- <end-date class="mx-1" /> -->
         </v-container>
       </v-flex>
 
       <v-flex xs2>
         <v-container fluid bg pa-0 ma-0 fill-height grid-list-md text-xs-center>
-          <v-btn class="mx-1" color="primary" @click="filterEventsByTimeRange">
-            <font-awesome-icon :icon="['fas', 'search']"></font-awesome-icon>
-          </v-btn>
+          <btn :icon="'search'" @click="filterEventsByTimeRange" />
         </v-container>
       </v-flex>
     </v-layout>
@@ -49,13 +49,13 @@
 
 <script>
 import { mapGetters, mapActions } from 'vuex'
-import startDate from '~/components/molecules/toolbar/GeoTimeToolbarStartDate'
 
-import endDate from '~/components/molecules/toolbar/GeoTimeToolbarEndDate'
+import btn from '~/components/atoms/BaseBtn'
 
+import calendar from '~/components/molecules/toolbar/GeoTimeToolbarCalendar'
 export default {
   name: 'GeoTimeFilter',
-  components: { startDate, endDate },
+  components: { btn, calendar },
   props: [],
   data() {
     return {}

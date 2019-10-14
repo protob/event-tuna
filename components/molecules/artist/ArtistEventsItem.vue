@@ -9,30 +9,20 @@
       <div class="toolbar-wrap d-flex align-center justify-space-between">
         <div class="buttons-wrap mr-2 d-inline-block">
           <div class="mr-2 my-2 d-inline-block">
-            <v-btn
-              depressed="depressed"
-              small="small"
-              color="primary"
-              @click="toggleDetails"
-              >details</v-btn
-            >
+            <btn depressed small @click="toggleDetails">details</btn>
           </div>
           <a target="_blank" :href="item.uri" class="d-inline-block">
             <div class="my-2 mr-2">
-              <v-btn depressed="depressed" small="small" color="primary"
-                >Link</v-btn
-              >
+              <btn :depressed="'depressed'" :small="'small'">Link</btn>
             </div>
           </a>
-
-          <v-btn
-            disabled="disabled"
-            outlined="outlined"
-            depressed="depressed"
-            small="small"
-            color="primary"
-            class="mr-2"
-            >{{ item.type }}</v-btn
+          <btn
+            disabled
+            outlined
+            small
+            :css-class="'mr-2'"
+            @click="showModal({ name: 'confirm_delete_category', id: catId })"
+            >{{ item.type }}</btn
           >
         </div>
         <div>
@@ -58,6 +48,7 @@
 <script>
 import toolbarEventSingle from '~/components/molecules/toolbar/EventSingleToolbar'
 import artistEventDetails from '~/components/molecules/artist/ArtistEventsItemDetails'
+import btn from '~/components/atoms/BaseBtn'
 const crg = require('country-reverse-geocoding').country_reverse_geocoding()
 const getCountryISO2 = require('country-iso-3-to-2')
 export default {
@@ -65,7 +56,8 @@ export default {
 
   components: {
     toolbarEventSingle,
-    artistEventDetails
+    artistEventDetails,
+    btn
   },
   props: {
     item: {

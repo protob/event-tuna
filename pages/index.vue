@@ -27,7 +27,7 @@ export default {
     artistsByCatsListing
   },
   mounted() {
-    //  this.addHelpers()
+    this.addHelpers()
   },
   methods: {
     addHelpers() {
@@ -35,9 +35,7 @@ export default {
       elems.forEach((el, idx) => {
         const div = document.createElement('div')
         const name = el.getAttribute('data-name')
-
         div.innerHTML = ` <div class="component-helper">${name}</div>`
-
         el.appendChild(div)
       })
     }
