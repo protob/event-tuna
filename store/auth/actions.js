@@ -8,7 +8,7 @@ export default {
     ref.get().then((docSnapshot) => {
       if (docSnapshot.exists) {
         ref.onSnapshot((doc) => {
-          alert('user already exist')
+          console.error('user already exist')
         })
       } else {
         ref.set(form)

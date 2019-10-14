@@ -115,7 +115,7 @@ export default {
       }
 
       const map = {}
-      const catsObj = snap.docs.map((doc) => {
+      snap.docs.map((doc) => {
         const item = doc.data()
         map[item.id] = item.displayName
       })

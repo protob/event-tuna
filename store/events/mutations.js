@@ -2,7 +2,7 @@ export default {
   SORT_EVENTS(state, order) {
     let o = 0
     let k = 'displayName'
-    ;('date asc')
+
     switch (order) {
       case 'asc':
         o = 1
@@ -41,9 +41,6 @@ export default {
 
   FILTER_EVENTS_BY_COUNTRY(state, payload) {
     state.currentEvents = payload.filteredArr
-  },
-  TOGGLE_CAT_IS_VISIBLE(state, payload) {
-    state.options.ui.cat.hasVisibleDetails = payload.hasCatsVisible
   },
 
   SET_CURRENT_COUNTRY_CODE(state, payload) {

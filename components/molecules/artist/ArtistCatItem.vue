@@ -11,9 +11,9 @@
       </v-card>
 
       <div class="artist-cats-stats">
-        <ArtistCatsStatsTotal :cat-id="cat.id" />
+        <ArtistCatsStatsTotal :cat-id="cat.id" @toggleDetails="toggleDetails" />
       </div>
-      <div v-if="catDetailsVisible" class="cats-items">
+      <div v-if="detailsVisible" class="cats-items">
         <artist-item
           v-for="(artistId, idx) in cat.artistsIds"
           :key="idx"
@@ -53,6 +53,7 @@ export default {
   },
   data() {
     return {
+      detailsVisible: false,
       continents: {
         AF: 'Africa',
         AN: 'Antarctica',
@@ -64,11 +65,7 @@ export default {
       }
     }
   },
-  computed: {
-    ...mapGetters({
-      catDetailsVisible: 'events/getCatIsDetailVisible'
-    })
-  },
+  computed: {},
   mounted() {
     this.calculateCatStats()
   },
@@ -78,8 +75,10 @@ export default {
       this.$store.dispatch('cats/calculateCatStats', this.cat.id)
     },
 
-    toggleDetails() {
-      this.isVisible = !this.isVisible
+    toggleDetails(payload) {
+      this.detailsVisible = payload
+      console.log('sdfsdfsd', payload)
+      // this.isVisible = !this.isVisible
     }
   }
 }

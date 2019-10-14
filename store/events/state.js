@@ -11,10 +11,6 @@ export default () => ({
   currentCountryCode: 'pl',
   currentEvents: [],
   options: {
-    ui: {
-      cat: {
-        hasVisibleDetails: true
-      }
-    }
+    ui: {}
   }
 })

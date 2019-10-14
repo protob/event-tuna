@@ -30,9 +30,9 @@
               class="red--text"
               :icon="['fas', 'map-marker']"
             ></font-awesome-icon>
-            <span v-if="catsStats[catId]" class="arists-count">
-              {{ catsStats[catId].events }}
-            </span>
+            <span v-if="catsStats[catId]" class="arists-count">{{
+              catsStats[catId].events
+            }}</span>
             <span v-else>0</span>
           </div>
         </v-row>
@@ -42,15 +42,15 @@
 </template>
 
 <script>
-import { tsThisType } from '@babel/types'
-import { mapGetters, mapActions } from 'vuex'
-import { fireDb } from '~/plugins/firebase.js'
+import { mapGetters } from 'vuex'
+
 export default {
   name: 'CatsStatsTotals',
   components: {},
   props: ['catId'],
   data() {
     return {
+      detailsVisible: false,
       hasCatsVisible: true,
       artistCountKey: Date.now()
     }
@@ -58,6 +58,7 @@ export default {
   computed: {
     ...mapGetters({
       catDetailsVisible: 'events/getCatIsDetailVisible',
+      getCatIdsWithVisibleDetails: 'events/getCatIsDetailVisible',
       catsStats: 'cats/getCatsStats'
       // ...
     })
@@ -72,6 +73,8 @@ export default {
   },
   methods: {
     toggleCatDetails() {
+      this.detailsVisible = !this.detailsVisible
+      this.$emit('toggleDetails', this.detailsVisible)
       this.$store.dispatch('events/toggleCatDetails', !this.catDetailsVisible)
     }
   }

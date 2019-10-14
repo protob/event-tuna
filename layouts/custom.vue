@@ -10,8 +10,6 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
-
 import GeoTimeToolbar from '~/components/molecules/toolbar/GeoTimeToolbar'
 import planner from '~/components/molecules/toolbar/PlannerToolbar'
 import userWidget from '~/components/molecules/user/userWidget'

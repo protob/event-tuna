@@ -27,7 +27,7 @@
 </template>
 
 <script>
-import { mapState, mapGetters } from 'vuex'
+import { mapGetters } from 'vuex'
 import toolbarArtistSingle from '~/components/molecules/toolbar/ArtistSingleToolbar'
 import artistCatStatsSingle from '~/components/molecules/artist/ArtistCatsStatsSingle'
 
@@ -75,7 +75,6 @@ export default {
 
       let total = 0
       Object.keys(cat.artistEvents).forEach((k) => {
-        // const item = cat.artistEvents[k]
         total++
       })
       return total

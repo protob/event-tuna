@@ -17,7 +17,7 @@
               >details</v-btn
             >
           </div>
-          <a target="_blank" href="https://google.pl" class="d-inline-block">
+          <a target="_blank" :href="item.uri" class="d-inline-block">
             <div class="my-2 mr-2">
               <v-btn depressed="depressed" small="small" color="primary"
                 >Link</v-btn
@@ -37,13 +37,17 @@
         </div>
         <div>
           <div class="date subtitle d-inline-block">{{ item.start.date }}</div>
-          <toolbar-event-single :country="country" class="d-inline-block" />
+          <toolbar-event-single
+            :country="country"
+            :item="item"
+            class="d-inline-block"
+          />
         </div>
       </div>
       <!-- details -->
 
       <artist-event-details
-        class="d-inline-block"
+        class="d-block"
         :item="item"
         :details-visible="detailsVisible"
       ></artist-event-details>

@@ -28,7 +28,7 @@
     <div v-bar class="events-listing-inner">
       <div>
         <artist-event-item
-          v-for="(item, idx) in orderBy(getCurrentEvents, orderKey, order)"
+          v-for="item in orderBy(getCurrentEvents, orderKey, order)"
           :key="item.id"
           :item="item"
         />
@@ -38,7 +38,7 @@
 </template>
 
 <script>
-import { mapState, mapGetters } from 'vuex'
+import { mapGetters } from 'vuex'
 import Vue2Filters from 'vue2-filters'
 import EventsGlobalToolbar from '~/components/molecules/toolbar/EventsGlobalToolbar'
 import artistEventItem from '~/components/molecules/artist/ArtistEventsItem'

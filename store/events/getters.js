@@ -13,9 +13,6 @@ export default {
     return filteredArr
   },
 
-  getCatIsDetailVisible(state) {
-    return state.options.ui.cat.hasVisibleDetails
-  },
   getCurrentCountryCode(state) {
     return state.currentCountryCode
   },

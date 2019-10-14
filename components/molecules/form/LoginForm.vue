@@ -2,9 +2,9 @@
   <div>
     <v-card>
       <v-toolbar dark color="primary">
-        <v-toolbar-title class="headline text-capitalize">{{
-          formatedName
-        }}</v-toolbar-title>
+        <v-toolbar-title class="headline text-capitalize">
+          {{ formatedName }}
+        </v-toolbar-title>
         <v-spacer></v-spacer>
         <div class="text-center push-top">
           <v-btn color="white darken-1" text @click="hideModal">Close</v-btn>
@@ -13,7 +13,7 @@
       <ValidationObserver ref="obs">
         <SchemaForm v-model="userData" :schema="schema">
           <!-- login/register -->
-          <v-card-actions v-if="isLogin">
+          <v-card-actions>
             <v-container>
               <v-layout justify-center class="pb-4">
                 <v-btn @click="clear">Clear</v-btn>

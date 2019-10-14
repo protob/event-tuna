@@ -5,7 +5,7 @@
 //   inject: true,
 //   fieldsBagName: 'veeFields'
 // })
-import Vue from 'vue'
+
 import { ValidationProvider, ValidationObserver, extend } from 'vee-validate'
 import { required } from '~/plugins/vee-validate-rules.js'
 // Add a rule.
@@ -16,10 +16,13 @@ extend('required', {
 })
 
 extend('secret', {
-  validate: value => value === 'example',
+  validate: (value) => value === 'example',
   message: 'This is not the magic word'
 })
 
 // Register it globally
 // export default Vue.component('ValidationProvider', ValidationProvider)
-export default { ValidationProvider, ValidationObserver }
+export default {
+  ValidationProvider,
+  ValidationObserver
+}

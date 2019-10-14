@@ -1,9 +1,11 @@
 <template>
   <section class="has-helper toolbar-event-single" :data-name="$options.name">
-    <font-awesome-icon
-      class="red--text d-inline-block mx-1"
-      :icon="['fas', 'map-marker-alt']"
-    ></font-awesome-icon>
+    <a target="_blank" :href="googleMapUrl">
+      <font-awesome-icon
+        class="red--text d-inline-block mx-1"
+        :icon="['fas', 'map-marker-alt']"
+      ></font-awesome-icon>
+    </a>
     <span
       v-if="country"
       class="flag-icon d-inline-block mr-1"
@@ -21,11 +23,21 @@
 export default {
   name: 'EventSingleToolbar',
   components: {},
-  props: ['country'],
+  props: ['country', 'item'],
   data() {
     return {}
   },
-  computed: {},
+  computed: {
+    googleMapUrl() {
+      const url = this.item.venue
+        ? 'https://maps.google.com/?q=' +
+          this.item.venue.lat +
+          ',' +
+          this.item.venue.lng
+        : ''
+      return url
+    }
+  },
   mounted() {},
   methods: {}
 }

@@ -91,4 +91,6 @@ sw.*
 # Vim swap files
 *.swp
 
+# sonar
+.scannerwork
 

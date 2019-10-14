@@ -17,9 +17,10 @@
   </v-row>
 </template>
 <script>
-import { ValidationProvider, ValidationObserver, extend } from 'vee-validate'
+import { ValidationProvider, extend } from 'vee-validate'
 import FormMixin from '~/mixins/FormMixin.js'
 import { required, email, max } from '~/plugins/vee-validate-rules.js'
+import { fireDb } from '~/plugins/firebase.js'
 // vee validate
 
 extend('asyncRuleEmailNotExist', {

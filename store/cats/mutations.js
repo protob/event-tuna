@@ -1,5 +1,3 @@
-import firebase from 'firebase/app'
-
 import Vue from 'vue'
 import { fireDb } from '~/plugins/firebase.js'
 const { query } = require('what-country')
@@ -172,7 +170,7 @@ export default {
       const item = items.artistsEvents[k]
       const events = item.artistEvents
 
-      Object.values(events).forEach((item) => {
+      Object.values(events).forEach((el) => {
         total++
       })
     })
