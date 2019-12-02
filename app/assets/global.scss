@@ -1,0 +1,66 @@
+$font-size-root: 20px;
+
+.small-input {
+
+
+  .v-input__control,
+  .v-text-field__slot,
+  .v-text-field__slot,
+  .v-input__slot {
+    min-height: 36px !important;
+    max-height: 36px !important;
+
+  }
+
+}
+
+
+
+.select-small-wrap {
+
+  .v-input__control,
+  .v-text-field__slot,
+  .v-text-field__slot,
+  .v-input__slot {
+    min-height: 36px !important;
+    max-height: 36px !important;
+
+  }
+
+  .v-input__append-inner {
+    margin-top: 5px !important;
+  }
+
+
+}
+
+
+//-----------commaon helper------------
+.has-helper {
+  position: relative;
+}
+
+.component-helper {
+  background-color: black;
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  z-index: 111;
+  opacity: 1;
+  padding: 4px;
+  color: red;
+}
+
+
+
+/* Change the white to any color ;) */
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+  -webkit-box-shadow: 0 0 0 30px #424242 inset !important;
+}
+
+input:-webkit-autofill {
+  -webkit-text-fill-color: white !important;
+}
