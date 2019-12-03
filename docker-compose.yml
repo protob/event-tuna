@@ -1,28 +1,6 @@
 version: "3"
 
 services:
-  #nuxt:
-    # build: ./app/
-    # container_name: nuxt
-    # restart: "no"
-    # ports:
-    #   - "3000:3000"
-    # command:
-    #   "npm run dev"
-
-
-  # vue-app:
-  #   container_name: vue-app
-  #   build:
-  #     context: .
-  #     dockerfile: ./app/Dockerfile
-  #   volumes:
-  #     - '.:/app'
-  #     - '/app/node_modules'
-  #   ports:
-  #     - '3000:3000'
-
-
 
   nginx:
     image: nginx:1.17
@@ -46,12 +24,3 @@ services:
     ports:
       - '3000:3000'
 
-  # nginx:
-  #   image: nginx:1.17
-  #   container_name: ngx
-  #   ports:
-  #     - "80:80"
-  #   volumes:
-  #     - ./nginx:/etc/nginx/conf.d
-  #   depends_on:
-  #     - nuxt
