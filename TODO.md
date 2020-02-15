@@ -1,0 +1,2 @@
+- normalize songkick api response data
+- add tests
