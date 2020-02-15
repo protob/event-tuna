@@ -2,17 +2,17 @@
 
 > Event tracking app
 
+[![CircleCI](https://circleci.com/gh/protob/event-lynx/tree/master.svg?style=shield)](https://circleci.com/gh/protob/event-lynx)
+
 ## Build and run using docker
 
 ```
 docker-compose build && docker-compose up -d
 ```
 
-
-
 ## Build and run using yarn
 
-``` bash
+```bash
 # install dependencies
 $ yarn install
 

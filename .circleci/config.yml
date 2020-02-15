@@ -2,34 +2,26 @@ version: 2
 jobs:
   deploy:
     docker:
-      - image: circleci/node:latest
-    working_directory: ~/repo
-
+      - image: 'circleci/php:7.3-stretch-node-browsers'
     steps:
+      - type: shell
+        shell: /bin/sh
+        pwd: /
+        command: sudo apt update && sudo apt install git -y && git --version
+
+      - run: sudo apt update
+      - run: sudo apt-get install rsync
+      - add_ssh_keys
       - checkout
-
-      # Download and cache dependencies
-      - restore_cache:
-          keys:
-            - v1-dependencies-{{ checksum "package.json" }}
-            # fallback to using the latest cache if no exact match is found
-            - v1-dependencies-
-
       - run:
-          name: Install dependencies
-          command: yarn install
-      - save_cache:
-          paths:
-            - node_modules
-          key: v1-dependencies-{{ checksum "package.json" }}
-
-      - run:
-          name: Package
-          command: yarn generate
-      - run:
-          name: Deploy
-          command: bash ./deploy_scripts/deploy.sh evlx.refer.pl
-
+          name: Setup env
+          command: bash ./deploy_scripts/gendotenv.sh
+      - run: yarn install
+      - run: yarn generate
+      - run: ssh-keyscan -H $PROD_SERVER >> ~/.ssh/known_hosts
+      - run: >-
+          rsync -avce ssh --delete ./dist/
+          root@$PROD_SERVER:/var/www/evlx.refer.pl/public_html
 workflows:
   version: 2
   build_and_deploy:
