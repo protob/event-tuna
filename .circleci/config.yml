@@ -21,7 +21,7 @@ jobs:
       - run: ssh-keyscan -H $PROD_SERVER >> ~/.ssh/known_hosts
       - run: >-
           rsync -avce ssh --delete ./dist/
-          root@$PROD_SERVER:/var/www/evlx.refer.pl/public_html
+          root@$PROD_SERVER:/var/www/evlx.app-js.pl/public_html
 workflows:
   version: 2
   build_and_deploy:
