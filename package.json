@@ -10,7 +10,8 @@
 		"start": "cross-env NODE_ENV=production node server/index.js",
 		"generate": "nuxt generate",
 		"lint": "eslint --ext .js,.vue --ignore-path .gitignore .",
-		"test": "jest"
+		"test": "jest",
+		"cc": "node ./generateComponent.js"
 	},
 	"lint-staged": {
 		"*.{js,vue}": "eslint"
@@ -37,6 +38,7 @@
 		"@nuxtjs/eslint-module": "^1.0.0",
 		"@nuxtjs/vuetify": "^1.0.0",
 		"@vue/test-utils": "^1.0.0-beta.27",
+		"agen": "^1.0.7",
 		"babel-eslint": "^10.0.1",
 		"babel-jest": "^24.1.0",
 		"cookie-universal-nuxt": "^2.0.17",
