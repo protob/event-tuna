@@ -29,7 +29,7 @@
 		"express": "^4.16.4",
 		"glob-all": "^3.1.0",
 		"mon": "0.0.8",
-		"nuxt": "^2.0.0"
+		"nuxt": "^2.15.6"
 	},
 	"devDependencies": {
 		"@fortawesome/free-solid-svg-icons": "^5.11.1",
