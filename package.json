@@ -22,7 +22,7 @@
 		}
 	},
 	"dependencies": {
-		"@nuxtjs/axios": "^5.3.6",
+		"@nuxtjs/axios": "^5.13.3",
 		"@nuxtjs/pwa": "^3.0.0-0",
 		"@saeris/vue-spinners": "^1.0.8",
 		"cross-env": "^5.2.0",
