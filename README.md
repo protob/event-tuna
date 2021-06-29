@@ -1,6 +1,9 @@
 # event-lynx
 
-> Event tracking app
+> Event tracking app (Deprecated branch)
+
+
+TODO: Modernize to Vue3 & replace Firebase with Hasura.
 
 [![CircleCI](https://circleci.com/gh/protob/event-lynx/tree/master.svg?style=shield)](https://circleci.com/gh/protob/event-lynx)
 
