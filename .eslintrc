@@ -1,0 +1,6 @@
+{
+  "extends": [
+    "@antfu",
+    "plugin:jest/recommended"
+  ]
+}

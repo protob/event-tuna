@@ -1,33 +1,25 @@
-# event-lynx
+# Vital
 
-> Event tracking app (Deprecated branch)
+Vital - Vite starter
 
+Initial configuration based on [Vitesse](https://github.com/antfu/vitesse)
 
-TODO: Modernize to Vue3 & replace Firebase with Hasura.
+Modified for personal needs.
 
-[![CircleCI](https://circleci.com/gh/protob/event-lynx/tree/master.svg?style=shield)](https://circleci.com/gh/protob/event-lynx)
-
-## Build and run using docker
-
-```
-docker-compose build && docker-compose up -d
-```
-
-## Build and run using yarn
-
-```bash
-# install dependencies
-$ yarn install
-
-# serve with hot reload at localhost:3000
-$ yarn dev
-
-# build for production and launch server
-$ yarn build
-$ yarn start
-
-# generate static project
-$ yarn generate
-```
-
-For detailed explanation on how things work, check out [Nuxt.js docs](https://nuxtjs.org).
+### Main features:
+- Vue 3 / Vite 2 / TypeScript Support
+- pnpm
+- ESBuild 
+- File based routing
+- Components auto importing
+- Protium UI (WIP)
+- Windi CSS
+- I18n
+- Markdown
+- <script setup>
+- Server-side generation (SSG) via vite-ssg
+- [Pinia](https://github.com/posva/pinia) store 
+- [Villus](https://github.com/logaretm/villus) Lightweight graphQL client 
+- Jest / vue-test-utils
+- Formvuelate + VeeValidate
+ 

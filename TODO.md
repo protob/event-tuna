@@ -1,2 +1,7 @@
-- normalize songkick api response data
-- add tests
+TODO:
+ - UPDATE TO VUE 3 
+ - REPLACE FIREBASE WITH HASURA
+ - REPLACE REST WITH GRAPHQL
+ - REPLACE VUEX WITH PINIA
+ - ADD DARK MODE
+ - ADD I18N
