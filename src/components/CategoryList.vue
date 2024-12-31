@@ -1,5 +1,5 @@
 <template>
-  <v-card class="ma-2" color="transparent" elevation="0">
+  <v-card color="transparent" elevation="0">
     <v-card-title class="text-h5 d-flex justify-space-between align-center pb-2">
 
       <div class="d-flex align-center">
@@ -296,6 +296,14 @@ onMounted(async () => {
 .categories-list .v-list-item {
   margin-bottom: 1rem;
   padding: 0;
+}
+
+:deep(.v-select__selection-text) {
+  font-size: 12px;
+}
+
+:global(.v-select__content .v-list-item-title) {
+  font-size: 12px;
 }
 
 </style>

@@ -6,7 +6,7 @@
       class="mb-3 pa-0"
     >
       <v-card class="artist-card">
-        <v-card-title class="d-flex justify-space-between py-2">
+        <v-card-title class="d-flex justify-space-between py-2 px-0">
           <span class="text-h6">{{ index + 1 }}. {{ artist.name }}</span>
           <div class="d-flex align-center">
             <v-btn
@@ -31,7 +31,7 @@
           </div>
         </v-card-title>
 
-        <v-card-text class="pt-0">
+        <v-card-text class="pt-0 px-0">
           <v-btn
             color="primary"
             size="small"
@@ -114,6 +114,16 @@ const handleUpdateArtist = async (artist: any) => {
 .events-card {
   box-shadow: none;
   border-radius: 0;
+
+}
+
+.events-card :deep(.v-card-title) {
+  background-color: #161616;
+  border-radius: 2px;
+}
+
+.events-card :deep(.v-list) {
+  background-color: #1E1E1E!important;
 }
 
 .event-country {

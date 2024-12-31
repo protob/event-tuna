@@ -127,7 +127,7 @@ const handleDeleteArtist = (data: any) => {
 
 <style scoped>
 .category-card {
-  border: 1px solid rgba(255, 255, 255, 0.1);
+
   background-color: #1e1e1e;
 
 }

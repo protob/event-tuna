@@ -224,7 +224,7 @@ onMounted(async () => {
 }
 
 .event-card {
-  border: 1px solid rgba(255, 255, 255, 0.1);
+
   background-color: #1e1e1e;
 }
 
@@ -241,4 +241,13 @@ onMounted(async () => {
   margin-bottom: 1rem;
   padding: 0;
 }
+
+:deep(.v-select__selection-text) {
+  font-size: 12px;
+}
+
+:global(.v-select__content .v-list-item-title) {
+  font-size: 12px;
+}
+
 </style>
