@@ -29,12 +29,22 @@ coverage
 
 *.tsbuildinfo
 .env
-
 todo.md
-hasura
-hasura/db_data/
 tree.txt
 get.sh
 get-chunks.sh
 sources.md
 z-chunks
+
+
+# Hasura
+hasura/db_data/
+/hasura/*
+!/hasura/schema.sql
+!/hasura/docker-compose.yaml
+!/hasura/.env.example
+!/hasura/sql/
+/hasura/sql/*
+!/hasura/sql/drop_db.sql
+!/hasura/sql/schema.sql
+!/hasura/db_data/
