@@ -35,79 +35,7 @@ export const GET_CATEGORIES = gql`
     }
   }
 `
-// export const GET_CATEGORIES = gql`
-//   query GetCategories($userId: uuid!) {
-//     categories(where: { user_id: { _eq: $userId } }) {
-//       id
-//       name
-//       user_id
-//       created_at
-//       updated_at
-//       artist_categories {
-//         artist {
-//           id
-//           name
-//           favorite_count
-//           artist_events {
-//             id
-//             country_code
-//             event_count
-//           }
-//           events: event_artists {
-//             event {
-//               id
-//               name
-//               start_date
-//               venue {
-//                 country_code
-//               }
-//             }
-//           }
-//         }
-//       }
-//     }
-//   }
-// `
 
-// export const GET_ALL_EVENTS = gql`
-//   query GetAllEvents {
-//     events(order_by: { start_date: asc }) {
-//       id
-//       tm_id
-//       name
-//       type
-//       category
-//       description
-//       start_date
-//       end_date
-//       is_favorite
-//       url
-//       about
-//       image_url
-//       venue_id
-//       venue {
-//         id
-//         tm_id
-//         name
-//         city
-//         country
-//         country_code
-//         latitude
-//         longitude
-//       }
-//       event_artists {
-//         artist {
-//           id
-//           name
-//           favorite_count
-//         }
-//         is_headliner
-//       }
-//       created_at
-//       updated_at
-//     }
-//   }
-// `
 export const GET_ALL_EVENTS = gql`
   query GetAllEvents {
     events(order_by: { start_date: asc }) {
@@ -346,14 +274,7 @@ export const UPDATE_CATEGORY = gql`
   }
 `
 
-// export const DELETE_CATEGORY = gql`
-//   mutation DeleteCategory($id: uuid!) {
-//     delete_categories_by_pk(id: $id) {
-//       id
-//       name
-//     }
-//   }
-// `
+
 
 export const CREATE_ARTIST = gql`
   mutation CreateArtist($name: String!, $category_id: uuid!) {
@@ -404,18 +325,11 @@ export const UPDATE_ARTIST = gql`
   }
 `
 
-// export const DELETE_ARTIST = gql`
-//   mutation DeleteArtist($id: uuid!) {
-//     delete_artists_by_pk(id: $id) {
-//       id
-//       name
-//     }
-//   }
-// `
+
 
 export const DELETE_ARTIST = gql`
   mutation DeleteArtist($id: uuid!) {
-    # First delete events that belong ONLY to this artist
+    #  delete events that belong ONLY to this artist
     delete_events(
       where: {
         event_artists: {
@@ -579,7 +493,6 @@ export const UPDATE_ARTIST_EVENTS = gql`
 `
 
 
-
 export const DELETE_CATEGORY = gql`
   mutation DeleteCategory($categoryId: uuid!) {
     delete_artist_categories(where: { category_id: { _eq: $categoryId } }) {
@@ -592,29 +505,10 @@ export const DELETE_CATEGORY = gql`
   }
 `
 
-// export const DELETE_ARTIST = gql`
-//   mutation DeleteArtist($artistId: uuid!) {
-//     delete_artist_events(where: { artist_id: { _eq: $artistId } }) {
-//       affected_rows
-//     }
-//     delete_event_artists(where: { artist_id: { _eq: $artistId } }) {
-//       affected_rows
-//     }
-//     delete_artist_categories(where: { artist_id: { _eq: $artistId } }) {
-//       affected_rows
-//     }
-//     delete_artists_by_pk(id: $artistId) {
-//       id
-//       name
-//     }
-//   }
-// `
-
-
 
 export const DELETE_CATEGORY_COMPLEX = gql`
   mutation DeleteCategoryComplex($categoryId: uuid!) {
-    # First delete events that belong ONLY to artists that ONLY belong to this category
+    #  delete events that belong ONLY to artists that ONLY belong to this category
     delete_events(
       where: {
         event_artists: {
@@ -655,7 +549,7 @@ export const DELETE_CATEGORY_COMPLEX = gql`
       }
     }
 
-    # Delete event_artists entries for deleted artists
+    # Delete event_artists entries
     delete_event_artists(
       where: {
         artist: {
@@ -673,7 +567,7 @@ export const DELETE_CATEGORY_COMPLEX = gql`
       affected_rows
     }
 
-    # Delete artist_events for deleted artists
+    # Delete artist_events
     delete_artist_events(
       where: {
         artist: {
@@ -720,7 +614,7 @@ export const DELETE_CATEGORY_COMPLEX = gql`
       affected_rows
     }
 
-    # Finally delete the category itself
+    #  delete the category itself
     delete_categories_by_pk(id: $categoryId) {
       id
       name
@@ -766,7 +660,6 @@ export const DELETE_EVENTS_WITHOUT_CATEGORY = gql`
     }
   }
 `
-
 
 
 export const DELETE_EVENT_BY_ID = gql`

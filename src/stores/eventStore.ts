@@ -107,7 +107,7 @@ export const useEventStore = defineStore(
           }
         }
 
-        await fetchAllEvents() // Refetch
+        await fetchAllEvents() // Refetch all events to ensure consistency
         lastUpdate.value = Date.now()
 
         return newEvent
@@ -174,7 +174,7 @@ export const useEventStore = defineStore(
           !event.event_artists?.some((ea) => ea.artist.id === artistId)
       )
       lastUpdate.value = Date.now()
-      await fetchAllEvents() // Refetch
+      await fetchAllEvents() // Refetch to ensure consistency
     }
 
     const clearEventsByCategory = async (
@@ -191,7 +191,7 @@ export const useEventStore = defineStore(
             !event.event_artists?.some((ea) => artistIds.includes(ea.artist.id))
         )
         lastUpdate.value = Date.now()
-        await fetchAllEvents() // Refetch
+        await fetchAllEvents() // Refetch to ensure consistency
       } catch (error) {
         console.error('Error clearing category events:', error)
       }

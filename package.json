@@ -14,8 +14,11 @@
     "format": "prettier --write src/"
   },
   "dependencies": {
+    "@brixtol/country-continent": "^1.0.0",
     "@urql/core": "^5.1.0",
     "@urql/vue": "^1.4.2",
+    "country-flag-icons": "^1.5.13",
+    "flag-icons": "^7.2.3",
     "graphql": "^16.10.0",
     "graphql-tag": "^2.12.6",
     "pinia": "^2.3.0",
