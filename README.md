@@ -1,9 +1,14 @@
 # event-tuna
 
 
-
+```sh
+cd hasura
+docker compose up -d
 
 ```
+
+
+```sh
 bun install
 bun run dev
 ```
